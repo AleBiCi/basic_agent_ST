@@ -79,6 +79,7 @@ int main(int argc, const char * argv[]) {
             // ADD AGENT CODE HERE
 
             // ADD LOW LEVEL CONTROL CODE HERE
+            manoeuvre_msg.data_struct.RequestedAcc = 0.1;
 
             // Write log
             logger.write_line("Example");
