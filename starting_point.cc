@@ -20,7 +20,7 @@ extern "C" {
 // --- MATLAB PRIMITIVES INCLUDE ---
 
 #define DEFAULT_SERVER_IP    "127.0.0.1"
-#define SERVER_PORT                30000  // Server port
+#define SERVER_PORT               30000  // Server port
 #define DT 0.05
 
 // Handler for CTRL-C
@@ -75,11 +75,13 @@ int main(int argc, const char * argv[]) {
 
             // Example of using log
             logger.log_var("Example", "cycle", in->CycleNumber);
+            logger.log_var("Example", "vel", in->VLgtFild);
 
             // ADD AGENT CODE HERE
 
             // ADD LOW LEVEL CONTROL CODE HERE
             manoeuvre_msg.data_struct.RequestedAcc = 0.1;
+            manoeuvre_msg.data_struct.RequestedSteerWhlAg = 0.5;
 
             // Write log
             logger.write_line("Example");

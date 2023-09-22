@@ -20,23 +20,31 @@
 4. Select the correct compiler WLS (https://www.jetbrains.com/help/clion/how-to-create-toolchain-in-clion.html)
 5. Copy from the folder lib/win_WLS the communication library to the folder lib/
 6. Compile the agent
+   1. run cmake: cmake .
+   2. build the system: make
 7. Run the agent
 
 #### Setup using visual studio:
 1. Install visual studio professional (https://visualstudio.microsoft.com/it/vs/professional/)
-2. Open the folder project (in CLion: create Debug and Release profile);
-3. Select the correct compiler Visual Studio (https://www.jetbrains.com/help/clion/how-to-create-toolchain-in-clion.html)
-4. Copy from the folder lib/win_visual_studio the communication library to the folder lib/
-5. Compile the agent
-6. Run the agent
+2. Install cmake
+3. Open the folder project (in CLion: create Debug and Release profile);
+4. Select the correct compiler Visual Studio (https://www.jetbrains.com/help/clion/how-to-create-toolchain-in-clion.html)
+5. Copy from the folder lib/win_visual_studio the communication library to the folder lib/
+6. Compile the agent
+   1. run cmake: cmake .
+   2. build the system: make
+7. Run the agent
 
 #### Setup using MinGW
 1. Install MSYS2 https://www.msys2.org/
-2. Open the folder project (in CLion: create Debug and Release profile);
-3. Select the correct compiler MinGW (https://www.jetbrains.com/help/clion/how-to-create-toolchain-in-clion.html)
-4. Copy from the folder lib/win_mingw the communication library to the folder lib/
-5. Compile the agent
-6. Run the agent
+2. Install cmake
+3. Open the folder project (in CLion: create Debug and Release profile);
+4. Select the correct compiler MinGW (https://www.jetbrains.com/help/clion/how-to-create-toolchain-in-clion.html)
+5. Copy from the folder lib/win_mingw the communication library to the folder lib/
+6. Compile the agent
+   1. run cmake: cmake .
+   2. build the system: make
+7. Run the agent
 
 ### Linux
 1. Open a Linux shell and run:
@@ -46,6 +54,8 @@
 2. Open the folder project (in CLion: create Debug and Release profile);
 3. Copy from the folder lib/linux the communication library to the folder lib/
 4. Compile the agent
+   1. run cmake: cmake .
+   2. build the system: make
 5. Run the agent
 
 ### MacOs
@@ -56,4 +66,6 @@
 2. Open the folder project (in CLion: create Debug and Release profile);
 3. Copy from the folder lib/macos or lib/macos_x86 the communication library to the folder lib/
 4. Compile the agent
+   1. run cmake: cmake .
+   2. build the system: make
 5. Run the agent
