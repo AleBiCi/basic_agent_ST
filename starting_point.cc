@@ -40,7 +40,7 @@ int main(int argc, const char * argv[]) {
     size_t manoeuvre_msg_size = sizeof(manoeuvre_msg.data_buffer);
     uint32_t message_id = 0;
 
-#ifndef _MSC_VER
+#if not defined( _MSC_VER ) and not defined( _WIN32 )
     // More portable way of supporting signals on UNIX
     struct sigaction act;
     act.sa_handler = intHandler;
@@ -80,7 +80,7 @@ int main(int argc, const char * argv[]) {
             // ADD AGENT CODE HERE
 
             // ADD LOW LEVEL CONTROL CODE HERE
-            manoeuvre_msg.data_struct.RequestedAcc = 0.1;
+            manoeuvre_msg.data_struct.RequestedAcc = -0.3;
             manoeuvre_msg.data_struct.RequestedSteerWhlAg = 0.0;
 
             // Write log
