@@ -91,16 +91,18 @@ j_opt_fun = matlabFunction(sol_opt.j,'Vars',[t,v0,a0,sf,vf,af,T],'File','j_opt.m
 c = sym('c',[1 6]);  % called 'm' in the slides
 % idea: write optimal solution equations with explicit coefficients
 % c1,...,c5
+% Note: c0 = 0
 
-% coeffs_s_opt = ...
-% coeffs_v_opt = ...
-% coeffs_a_opt = ...
-% coeffs_j_opt = ...
+coeffs_s_opt = c(1)*t + 1/2*c(2)*t^2 + 1/6*c(3)*t^3 + 1/24*c(4)*t^4 + 1/120*c(5)*t^5 + c(6)*t^5;
+% Get further equations by differentiating s
+coeffs_v_opt = diff(coeffs_s_opt, t);
+coeffs_a_opt = diff(coeffs_v_opt, t);
+coeffs_j_opt = diff(coeffs_a_opt, t);
 
-% coeffs_s_opt_fun = matlabFunction(coeffs_s_opt,'Vars',{t,c},'File','coeffs_s_opt.m');
-% coeffs_v_opt_fun = matlabFunction(coeffs_v_opt,'Vars',{t,c},'File','coeffs_v_opt.m');
-% coeffs_a_opt_fun = matlabFunction(coeffs_a_opt,'Vars',{t,c},'File','coeffs_a_opt.m');
-% coeffs_j_opt_fun = matlabFunction(coeffs_j_opt,'Vars',{t,c},'File','coeffs_j_opt.m');
+coeffs_s_opt_fun = matlabFunction(coeffs_s_opt,'Vars',{t,c},'File','coeffs_s_opt.m');
+coeffs_v_opt_fun = matlabFunction(coeffs_v_opt,'Vars',{t,c},'File','coeffs_v_opt.m');
+coeffs_a_opt_fun = matlabFunction(coeffs_a_opt,'Vars',{t,c},'File','coeffs_a_opt.m');
+coeffs_j_opt_fun = matlabFunction(coeffs_j_opt,'Vars',{t,c},'File','coeffs_j_opt.m');
 
 %% Export the coefficent list in a matlab function
 % the coeffs are moltiplied by [1,2,6,24,120] to obtain the value of c1, c2, c3, c4, c5
@@ -127,47 +129,68 @@ vfval = 25;
 afval = 0.;
 
 %% The functions work both for vector (t_list) or number (t)
-% s_list = s_opt_fun(t_list, v0val, a0val, xfval, vfval, afval, Tmax);
-% v_list = ...
-% a_list = ...
-% j_list = ...
+s_list = s_opt_fun(t_list, v0val, a0val, xfval, vfval, afval, Tmax);
+v_list = v_opt_fun(t_list, v0val, a0val, xfval, vfval, afval, Tmax);
+a_list = a_opt_fun(t_list, v0val, a0val, xfval, vfval, afval, Tmax);
+j_list = j_opt_fun(t_list, v0val, a0val, xfval, vfval, afval, Tmax);
 
 %% The functions that used the coeflist
 coeffs = coef_list_fun(v0val, a0val, xfval, vfval, afval, Tmax);
-% coeffs_s_list = coeffs_s_opt_fun(t_list, coeffs);
-% coeffs_v_list = ...
-% coeffs_a_list = ...
-% coeffs_j_list = ...
+coeffs_s_list = coeffs_s_opt_fun(t_list, coeffs);
+coeffs_v_list = coeffs_v_opt_fun(t_list, coeffs);
+coeffs_a_list = coeffs_v_opt_fun(t_list, coeffs);
+coeffs_j_list = coeffs_a_opt_fun(t_list, coeffs);
 
 figure(1)
 %% Position
-% subplot(2,4,1)
-% plot(t_list, s_list,'b');hold on;
-% plot(t_list, coeffs_s_list,'r--');
-% grid on
-% xlabel('Time (s)','Interpreter','latex');
-% ylabel('Position $(m)$','Interpreter','latex');
+subplot(2,4,1)
+plot(t_list, s_list,'b');hold on;
+plot(t_list, coeffs_s_list,'r--');
+grid on
+xlabel('Time (s)','Interpreter','latex');
+ylabel('Position $(m)$','Interpreter','latex');
     
 %% Velocity
-% subplot(2,4,2)
-% ...
-    
+subplot(2,4,2)
+plot(t_list, v_list,'b','LineWidth',1.5); hold on;
+plot(t_list, coeffs_v_list,'r--','LineWidth',1.2);
+grid on
+xlabel('Time (s)','Interpreter','latex');
+ylabel('Velocity $(m/s)$','Interpreter','latex');
+
 %% Acceleration
-% subplot(2,4,3)
-% ...
+subplot(2,4,3)
+plot(t_list, a_list,'b','LineWidth',1.5); hold on;
+plot(t_list, coeffs_a_list,'r--','LineWidth',1.2);
+grid on
+xlabel('Time (s)','Interpreter','latex');
+ylabel('Acceleration $(m/s^2)$','Interpreter','latex');
 
-%% Control
-% subplot(2,4,4)
-% ...
-    
-%% Velocity on position
-% subplot(2,4,6)
-% ...
+%% Control (jerk)
+subplot(2,4,4)
+plot(t_list, j_list,'b','LineWidth',1.5); hold on;
+plot(t_list, coeffs_j_list,'r--','LineWidth',1.2);
+grid on
+xlabel('Time (s)','Interpreter','latex');
+ylabel('Jerk $(m/s^3)$','Interpreter','latex');
 
-%% Acceleration on position
-% subplot(2,4,7)
-% ...
+%% Velocity vs. Position
+subplot(2,4,6)
+plot(s_list, v_list,'b','LineWidth',1.5);
+grid on
+xlabel('Position $(m)$','Interpreter','latex');
+ylabel('Velocity $(m/s)$','Interpreter','latex');
 
-%% Control on position
-% subplot(2,4,8)
-% ...
+%% Acceleration vs. Position
+subplot(2,4,7)
+plot(s_list, a_list,'b','LineWidth',1.5);
+grid on
+xlabel('Position $(m)$','Interpreter','latex');
+ylabel('Acceleration $(m/s^2)$','Interpreter','latex');
+
+%% Control vs. Position
+subplot(2,4,8)
+plot(s_list, j_list,'b','LineWidth',1.5);
+grid on
+xlabel('Position $(m)$','Interpreter','latex');
+ylabel('Jerk $(m/s^3)$','Interpreter','latex');
