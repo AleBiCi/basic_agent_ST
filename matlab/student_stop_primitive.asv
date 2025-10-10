@@ -4,11 +4,11 @@
 %         Stop Primitive
 %              2025
 %%
-
-function [coefs,maxsf,tf] = stop_primitive(v0,a0,sf)
+fcn = @stop_primitive;
+[coefs,maxsf,tf] = fcn(v0,a0,sf)
     % Impossible cases: negative velocity and null final position -->
     % return 0
-    if (v0 <= 0) || (sf == 0)
+    if v0 <= 0 || sf == 0
         coefs = zeros(1,6); % Returns a vector of 6 zeros for each coefficient
     else
         % Can't reach a specified sf using given inputs (v0, a0)
