@@ -107,7 +107,7 @@ coeffs_j_opt_fun = matlabFunction(coeffs_j_opt,'Vars',{t,c},'File','coeffs_j_opt
 %% Export the coefficent list in a matlab function
 % the coeffs are moltiplied by [1,2,6,24,120] to obtain the value of c1, c2, c3, c4, c5
 coef_list_var = [0,coeffs(sol_opt.s,t) .* [1,2,6,24,120]]; % also includes c0=0 at the beginning
-coef_list_fun = matlabFunction(coef_list_var,'Vars',[v0,a0,sf,vf,af,T],'File','coef_list.m');  % !! doesn't depend on t, only on T
+coef_list_fun = matlabFunction(coef_list_var,'Vars',[v0,a0,sf,vf,af,T],'File','coef_list_fun.m');  % !! doesn't depend on t, only on T
 % - Use the matlabFunction function to generate a matlab function using a
 %   symbolic function 
 

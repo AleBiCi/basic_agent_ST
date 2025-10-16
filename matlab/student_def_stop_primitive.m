@@ -15,4 +15,4 @@ final_opt_time_stop_var = 1./solve(diff(subs(total_cost_var, [vf, af, T], [0, 0,
 % the result to get final result (Txf)
 
 %% Export the solution in a matlab function
-final_opt_time_stop_fun = matlabFunction(final_opt_time_stop_var, 'Vars', [v0, a0, sf], 'File', 'final_opt_time_stop.m');
+final_opt_time_stop_fun = matlabFunction(final_opt_time_stop_var(1), 'Vars', [v0, a0, sf], 'File', 'final_opt_time_stop.m');
