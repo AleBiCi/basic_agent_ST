@@ -141,56 +141,56 @@ coeffs_v_list = coeffs_v_opt_fun(t_list, coeffs);
 coeffs_a_list = coeffs_v_opt_fun(t_list, coeffs);
 coeffs_j_list = coeffs_a_opt_fun(t_list, coeffs);
 
-figure(1)
-%% Position
-subplot(2,4,1)
-plot(t_list, s_list,'b');hold on;
-plot(t_list, coeffs_s_list,'r--');
-grid on
-xlabel('Time (s)','Interpreter','latex');
-ylabel('Position $(m)$','Interpreter','latex');
-    
-%% Velocity
-subplot(2,4,2)
-plot(t_list, v_list,'b','LineWidth',1.5); hold on;
-plot(t_list, coeffs_v_list,'r--','LineWidth',1.2);
-grid on
-xlabel('Time (s)','Interpreter','latex');
-ylabel('Velocity $(m/s)$','Interpreter','latex');
-
-%% Acceleration
-subplot(2,4,3)
-plot(t_list, a_list,'b','LineWidth',1.5); hold on;
-plot(t_list, coeffs_a_list,'r--','LineWidth',1.2);
-grid on
-xlabel('Time (s)','Interpreter','latex');
-ylabel('Acceleration $(m/s^2)$','Interpreter','latex');
-
-%% Control (jerk)
-subplot(2,4,4)
-plot(t_list, j_list,'b','LineWidth',1.5); hold on;
-plot(t_list, coeffs_j_list,'r--','LineWidth',1.2);
-grid on
-xlabel('Time (s)','Interpreter','latex');
-ylabel('Jerk $(m/s^3)$','Interpreter','latex');
-
-%% Velocity vs. Position
-subplot(2,4,6)
-plot(s_list, v_list,'b','LineWidth',1.5);
-grid on
-xlabel('Position $(m)$','Interpreter','latex');
-ylabel('Velocity $(m/s)$','Interpreter','latex');
-
-%% Acceleration vs. Position
-subplot(2,4,7)
-plot(s_list, a_list,'b','LineWidth',1.5);
-grid on
-xlabel('Position $(m)$','Interpreter','latex');
-ylabel('Acceleration $(m/s^2)$','Interpreter','latex');
-
-%% Control vs. Position
-subplot(2,4,8)
-plot(s_list, j_list,'b','LineWidth',1.5);
-grid on
-xlabel('Position $(m)$','Interpreter','latex');
-ylabel('Jerk $(m/s^3)$','Interpreter','latex');
+% figure(1)
+% %% Position
+% subplot(2,4,1)
+% plot(t_list, s_list,'b');hold on;
+% plot(t_list, coeffs_s_list,'r--');
+% grid on
+% xlabel('Time (s)','Interpreter','latex');
+% ylabel('Position $(m)$','Interpreter','latex');
+% 
+% %% Velocity
+% subplot(2,4,2)
+% plot(t_list, v_list,'b','LineWidth',1.5); hold on;
+% plot(t_list, coeffs_v_list,'r--','LineWidth',1.2);
+% grid on
+% xlabel('Time (s)','Interpreter','latex');
+% ylabel('Velocity $(m/s)$','Interpreter','latex');
+% 
+% %% Acceleration
+% subplot(2,4,3)
+% plot(t_list, a_list,'b','LineWidth',1.5); hold on;
+% plot(t_list, coeffs_a_list,'r--','LineWidth',1.2);
+% grid on
+% xlabel('Time (s)','Interpreter','latex');
+% ylabel('Acceleration $(m/s^2)$','Interpreter','latex');
+% 
+% %% Control (jerk)
+% subplot(2,4,4)
+% plot(t_list, j_list,'b','LineWidth',1.5); hold on;
+% plot(t_list, coeffs_j_list,'r--','LineWidth',1.2);
+% grid on
+% xlabel('Time (s)','Interpreter','latex');
+% ylabel('Jerk $(m/s^3)$','Interpreter','latex');
+% 
+% %% Velocity vs. Position
+% subplot(2,4,6)
+% plot(s_list, v_list,'b','LineWidth',1.5);
+% grid on
+% xlabel('Position $(m)$','Interpreter','latex');
+% ylabel('Velocity $(m/s)$','Interpreter','latex');
+% 
+% %% Acceleration vs. Position
+% subplot(2,4,7)
+% plot(s_list, a_list,'b','LineWidth',1.5);
+% grid on
+% xlabel('Position $(m)$','Interpreter','latex');
+% ylabel('Acceleration $(m/s^2)$','Interpreter','latex');
+% 
+% %% Control vs. Position
+% subplot(2,4,8)
+% plot(s_list, j_list,'b','LineWidth',1.5);
+% grid on
+% xlabel('Position $(m)$','Interpreter','latex');
+% ylabel('Jerk $(m/s^3)$','Interpreter','latex');
