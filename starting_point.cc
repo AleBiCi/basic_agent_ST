@@ -15,6 +15,9 @@ extern "C" {
 #include "server_lib.h"
 #include "logvars.h"
 
+// User includes
+#include "student_stop_primitive.h"
+
 // --- MATLAB PRIMITIVES INCLUDE ---
 // #include "primitives.h"
 // --- MATLAB PRIMITIVES INCLUDE ---
