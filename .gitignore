@@ -7,3 +7,4 @@ cmake-build-debug
 lib/libagent_lib.a
 Icon
 
+.DS_Store
