@@ -19,7 +19,7 @@ final_opt_time_pass_fun = matlabFunction(final_opt_time_pass_var,'Vars',[v0,a0,s
 
 %% Determine the time to reach the minimum velocity
 time_min_vel_var = solve(diff(final_opt_vel_pass_var, T) == 0, T);
-time_min_vel_fun = matlabFunction(time_min_vel_var,'Vars',[v0,a0,sf,T],'File','time_min_vel.m');
+time_min_vel_fun = matlabFunction(time_min_vel_var,'Vars',[a0,sf],'File','time_min_vel.m');
 min_vel_var = simplify(subs(final_opt_vel_pass_var, T, time_min_vel_var(2)));
-min_vel_fun = matlabFunction(min_vel_var,'Vars',[v0,a0,sf,T],'File','min_vel.m');
+min_vel_fun = matlabFunction(min_vel_var,'Vars',[v0,a0,sf],'File','min_vel.m');
 % - Use functions 'solve', 'diff', 'subs', and 'matlabFunction'
