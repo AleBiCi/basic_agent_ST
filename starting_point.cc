@@ -15,11 +15,8 @@ extern "C" {
 #include "server_lib.h"
 #include "logvars.h"
 
-// User includes
-#include "student_stop_primitive.h"
-
 // --- MATLAB PRIMITIVES INCLUDE ---
-// #include "primitives.h"
+#include "primitives.h"
 // --- MATLAB PRIMITIVES INCLUDE ---
 
 #define DEFAULT_SERVER_IP    "127.0.0.1"
@@ -79,19 +76,45 @@ int main(int argc, const char * argv[]) {
             // Example of using log
             logger.log_var("Example", "cycle", in->CycleNumber);
             logger.log_var("Example", "vel", in->VLgtFild);
-
+            
+            
             // ADD AGENT CODE HERE
+            double v0 = 0.;
+            double a0 = 0.;
+            double sf = in->TrfLightDist;
 
+            double acc = in->ALgtFild;  // Current acceleration
+            
+            // student_pass_primitive();
+            
+            
             // ADD LOW LEVEL CONTROL CODE HERE
-            manoeuvre_msg.data_struct.RequestedAcc = -0.3;
+            // manoeuvre_msg.data_struct.RequestedAcc = -0.3;
             manoeuvre_msg.data_struct.RequestedSteerWhlAg = 0.0;
 
+            /*  Testing PID with reference ACCELERATION PROFILE */
+            double P_gain = 10; // TODO: test PID values
+            double I_gain = 10;
+            
+            double req_acc = 0.1;   // requested acceleration for testing
+            double error = req_acc - acc;   // Difference between requested acceleration and actual agent accel
+            double req_ped = P_gain * error;    // Requested pedal (Proportional controller)
+
+            manoeuvre_msg.data_struct.RequestedAcc = req_ped;   // NOTE: RequestedAcc === REQUESTED PEDAL
+
+            // LOG FILE FOR LLC TESTING (filename = "acc_test")
+            logger.log_var("acc_test", "time", in->ECUupTime);  // logs current uptime
+            logger.log_var("acc_test", "acc", acc); // current acc
+            logger.log_var("acc_test", "req_acc", req_acc); // requested acc
+            logger.write_line("acc_test");  // Writes the actual log file
+
             // Write log
-            logger.write_line("Example");
+            // logger.write_line("Example");
 
             // Screen print
             printLogVar(message_id, "Time", num_seconds);
             printLogVar(message_id, "Status", in->Status);
+            printLogVar(message_id, "acc", acc);  // Plot acceleration on console log
             printLogVar(message_id, "CycleNumber", in->CycleNumber);
 
             // Send manoeuvre message to the environment
