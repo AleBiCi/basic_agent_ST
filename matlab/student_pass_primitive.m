@@ -8,36 +8,45 @@
 %%
 
 function [coeffsT2, v2, T2, coeffsT1, v1, T1] = student_pass_primitive(v0, a0, sf, vfmin, vfmax, Tmin, Tmax)
-    Tvmin = 0.;
-    Tvmax = 0.;
-    T_star = 0.;
-    v_star = 0.;
-    v1 = 0.;
-    v2 = 0.;
     if a0 >= 0
         Tvmin = final_opt_time_pass(v0, a0, sf, vfmin);
         Tvmax = final_opt_time_pass(v0, a0, sf, vfmax);
     else
-        T_star = time_min_vel(v0, a0, sf, T);
-        v_star = min_vel(v0, a0, sf, T);
-        if v_star < v_min && v_min < v_max
+        T_star = time_min_vel(a0, sf);
+        v_star = min_vel(v0, a0, sf);
+        if v_star < vfmin && vfmin < vfmax
             Tvmin = final_opt_time_pass(v0, a0, sf, vfmin);
             Tvmax = final_opt_time_pass(v0, a0, sf, vfmax);
         elseif vfmin < v_star && v_star < vfmax
             Tvmin = T_star;
             Tvmax = final_opt_time_pass(v0, a0, sf, vfmax);
+        else
+            Tvmin = 0.;
+            Tvmax = 0.;
         end
     end
-    T1 = 0.; T2 = 0.;
-    [T1, T2] = intersect([Tmin, Tmax],[Tvmax, Tvmin]);
 
-    if T1 > 0. & T1 <= T2
-        v1 = final_opt_vel_pass(v0, a0, sf, T2);
-        v2 = final_opt_vel_pass(v0, a0, sf, T1);
-        coeffsT1 = coef_list_fun(v0, a0, sf, v1, 0., T1);
-        coeffsT2 = coef_list_fun(v0, a0, sf, v2, 0., T2);
+    % FREE-FLOW PRIMITIVE
+    if Tmin == 0. && Tmax == 0.
+        T1 = Tvmin;
+        T2 = Tvmax;
+    % FREE-FLOW PRIMITIVE
+    else
+        T1 = max(Tmin, Tvmax);
+        T2 = min(Tmax, Tvmin);
     end
 
-    coeffsT1 = zeros(6);
-    coeffsT2 = zeros(6);
+    if Tvmax ~= 0 && Tvmax <= Tvmin && T1 > 0 && T1 <= T2
+        v1 = final_opt_vel_pass(v0, a0, sf, T1);
+        v2 = final_opt_vel_pass(v0, a0, sf, T2);
+        coeffsT1 = coef_list_fun(v0, a0, sf, v1, 0., T1);
+        coeffsT2 = coef_list_fun(v0, a0, sf, v2, 0., T2);
+    else
+        coeffsT1 = [0.;0.;0.;0.;0.;0.];
+        coeffsT2 = [0.;0.;0.;0.;0.;0.];
+        T1 = 0.;
+        T2 = 0.;
+        v1 = 0.;
+        v2 = 0.;
+    end
 end
