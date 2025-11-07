@@ -177,53 +177,53 @@ log/screen_print.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/log/screen_print.c.s
 .PHONY : log/screen_print.c.s
 
-matlab/codegen/lib/student_stop_primitive/rt_nonfinite.o: matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o
-.PHONY : matlab/codegen/lib/student_stop_primitive/rt_nonfinite.o
+matlab/codegen/lib/primitives/primitives.o: matlab/codegen/lib/primitives/primitives.c.o
+.PHONY : matlab/codegen/lib/primitives/primitives.o
 
 # target to build an object file
-matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o
-.PHONY : matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o
+matlab/codegen/lib/primitives/primitives.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.o
+.PHONY : matlab/codegen/lib/primitives/primitives.c.o
 
-matlab/codegen/lib/student_stop_primitive/rt_nonfinite.i: matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.i
-.PHONY : matlab/codegen/lib/student_stop_primitive/rt_nonfinite.i
+matlab/codegen/lib/primitives/primitives.i: matlab/codegen/lib/primitives/primitives.c.i
+.PHONY : matlab/codegen/lib/primitives/primitives.i
 
 # target to preprocess a source file
-matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.i
-.PHONY : matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.i
+matlab/codegen/lib/primitives/primitives.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.i
+.PHONY : matlab/codegen/lib/primitives/primitives.c.i
 
-matlab/codegen/lib/student_stop_primitive/rt_nonfinite.s: matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.s
-.PHONY : matlab/codegen/lib/student_stop_primitive/rt_nonfinite.s
+matlab/codegen/lib/primitives/primitives.s: matlab/codegen/lib/primitives/primitives.c.s
+.PHONY : matlab/codegen/lib/primitives/primitives.s
 
 # target to generate assembly for a file
-matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.s
-.PHONY : matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.s
+matlab/codegen/lib/primitives/primitives.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.s
+.PHONY : matlab/codegen/lib/primitives/primitives.c.s
 
-matlab/codegen/lib/student_stop_primitive/student_stop_primitive.o: matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o
-.PHONY : matlab/codegen/lib/student_stop_primitive/student_stop_primitive.o
+matlab/codegen/lib/primitives/rt_nonfinite.o: matlab/codegen/lib/primitives/rt_nonfinite.c.o
+.PHONY : matlab/codegen/lib/primitives/rt_nonfinite.o
 
 # target to build an object file
-matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o
-.PHONY : matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o
+matlab/codegen/lib/primitives/rt_nonfinite.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.o
+.PHONY : matlab/codegen/lib/primitives/rt_nonfinite.c.o
 
-matlab/codegen/lib/student_stop_primitive/student_stop_primitive.i: matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.i
-.PHONY : matlab/codegen/lib/student_stop_primitive/student_stop_primitive.i
+matlab/codegen/lib/primitives/rt_nonfinite.i: matlab/codegen/lib/primitives/rt_nonfinite.c.i
+.PHONY : matlab/codegen/lib/primitives/rt_nonfinite.i
 
 # target to preprocess a source file
-matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.i
-.PHONY : matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.i
+matlab/codegen/lib/primitives/rt_nonfinite.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.i
+.PHONY : matlab/codegen/lib/primitives/rt_nonfinite.c.i
 
-matlab/codegen/lib/student_stop_primitive/student_stop_primitive.s: matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.s
-.PHONY : matlab/codegen/lib/student_stop_primitive/student_stop_primitive.s
+matlab/codegen/lib/primitives/rt_nonfinite.s: matlab/codegen/lib/primitives/rt_nonfinite.c.s
+.PHONY : matlab/codegen/lib/primitives/rt_nonfinite.s
 
 # target to generate assembly for a file
-matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.s
-.PHONY : matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.s
+matlab/codegen/lib/primitives/rt_nonfinite.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/basic_agent.dir/build.make CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.s
+.PHONY : matlab/codegen/lib/primitives/rt_nonfinite.c.s
 
 starting_point.o: starting_point.cc.o
 .PHONY : starting_point.o
@@ -264,12 +264,12 @@ help:
 	@echo "... log/screen_print.o"
 	@echo "... log/screen_print.i"
 	@echo "... log/screen_print.s"
-	@echo "... matlab/codegen/lib/student_stop_primitive/rt_nonfinite.o"
-	@echo "... matlab/codegen/lib/student_stop_primitive/rt_nonfinite.i"
-	@echo "... matlab/codegen/lib/student_stop_primitive/rt_nonfinite.s"
-	@echo "... matlab/codegen/lib/student_stop_primitive/student_stop_primitive.o"
-	@echo "... matlab/codegen/lib/student_stop_primitive/student_stop_primitive.i"
-	@echo "... matlab/codegen/lib/student_stop_primitive/student_stop_primitive.s"
+	@echo "... matlab/codegen/lib/primitives/primitives.o"
+	@echo "... matlab/codegen/lib/primitives/primitives.i"
+	@echo "... matlab/codegen/lib/primitives/primitives.s"
+	@echo "... matlab/codegen/lib/primitives/rt_nonfinite.o"
+	@echo "... matlab/codegen/lib/primitives/rt_nonfinite.i"
+	@echo "... matlab/codegen/lib/primitives/rt_nonfinite.s"
 	@echo "... starting_point.o"
 	@echo "... starting_point.i"
 	@echo "... starting_point.s"

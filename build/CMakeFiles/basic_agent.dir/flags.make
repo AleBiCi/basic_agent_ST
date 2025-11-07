@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/clang++
 C_DEFINES = -DLOG_INTERNAL
 
-C_INCLUDES = -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/student_stop_primitive -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/lib -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/log
+C_INCLUDES = -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/primitives -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/lib -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/log
 
 C_FLAGS = -DNOT_INLINED -DSERVER
 
 CXX_DEFINES = -DLOG_INTERNAL
 
-CXX_INCLUDES = -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/student_stop_primitive -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/lib -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/log
+CXX_INCLUDES = -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/primitives -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/lib -I/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/log
 
 CXX_FLAGS = -std=gnu++11 -DNOT_INLINED -DSERVER
 

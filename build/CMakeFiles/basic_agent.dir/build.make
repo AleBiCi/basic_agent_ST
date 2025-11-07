@@ -114,41 +114,41 @@ CMakeFiles/basic_agent.dir/starting_point.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/basic_agent.dir/starting_point.cc.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/starting_point.cc -o CMakeFiles/basic_agent.dir/starting_point.cc.s
 
-CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o: CMakeFiles/basic_agent.dir/flags.make
-CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o: /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c
-CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o: CMakeFiles/basic_agent.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o"
-	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o -MF CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o.d -o CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o -c /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c
+CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.o: CMakeFiles/basic_agent.dir/flags.make
+CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.o: /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/primitives/primitives.c
+CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.o: CMakeFiles/basic_agent.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.o -MF CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.o.d -o CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.o -c /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/primitives/primitives.c
 
-CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.i"
-	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c > CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.i
+CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/primitives/primitives.c > CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.i
 
-CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.s"
-	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c -o CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.s
+CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/primitives/primitives.c -o CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.s
 
-CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o: CMakeFiles/basic_agent.dir/flags.make
-CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o: /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c
-CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o: CMakeFiles/basic_agent.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o"
-	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o -MF CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o.d -o CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o -c /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c
+CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.o: CMakeFiles/basic_agent.dir/flags.make
+CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.o: /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/primitives/rt_nonfinite.c
+CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.o: CMakeFiles/basic_agent.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.o -MF CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.o.d -o CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.o -c /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/primitives/rt_nonfinite.c
 
-CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.i"
-	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c > CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.i
+CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/primitives/rt_nonfinite.c > CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.i
 
-CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.s"
-	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c -o CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.s
+CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/primitives/rt_nonfinite.c -o CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.s
 
 # Object files for target basic_agent
 basic_agent_OBJECTS = \
 "CMakeFiles/basic_agent.dir/log/screen_print.c.o" \
 "CMakeFiles/basic_agent.dir/log/logvars.cc.o" \
 "CMakeFiles/basic_agent.dir/starting_point.cc.o" \
-"CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o" \
-"CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o"
+"CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.o" \
+"CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.o"
 
 # External object files for target basic_agent
 basic_agent_EXTERNAL_OBJECTS =
@@ -156,8 +156,8 @@ basic_agent_EXTERNAL_OBJECTS =
 /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/bin/basic_agent: CMakeFiles/basic_agent.dir/log/screen_print.c.o
 /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/bin/basic_agent: CMakeFiles/basic_agent.dir/log/logvars.cc.o
 /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/bin/basic_agent: CMakeFiles/basic_agent.dir/starting_point.cc.o
-/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/bin/basic_agent: CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/student_stop_primitive.c.o
-/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/bin/basic_agent: CMakeFiles/basic_agent.dir/matlab/codegen/lib/student_stop_primitive/rt_nonfinite.c.o
+/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/bin/basic_agent: CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.o
+/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/bin/basic_agent: CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/rt_nonfinite.c.o
 /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/bin/basic_agent: CMakeFiles/basic_agent.dir/build.make
 /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/bin/basic_agent: CMakeFiles/basic_agent.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/bin/basic_agent"

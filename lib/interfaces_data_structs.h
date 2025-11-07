@@ -1,10 +1,10 @@
-// File for interfaces
+// File for 
 // WARNING! AUTOMATICALLY GENERATED - DO NOT EDIT
-// Origin file: interfaces_v1.2.csv
+// Origin file: _v1.2.csv
 // Origin CRC32: 4097400712
 
-#ifndef interfaces_data_structs_h
-#define interfaces_data_structs_h
+#ifndef _data_structs_h
+#define _data_structs_h
 
 #if defined(_DS1401)
 #include "ds1401_defines.h"
@@ -16,8 +16,8 @@
 extern "C" {
 #endif
 
-// interfaces version for printing
-#define AGENTINTERFACESVER 12
+//  version for printing
+#define AGENTVER 12
 
 #if defined(MATLAB_MEX_FILE) || defined(_DS1401) || defined(_WIN32)
 #pragma pack(push, 1)

@@ -55,6 +55,11 @@ int main(int argc, const char * argv[]) {
     printLine();
     printTable("Waiting for scenario message...", 0);
     printLine();
+
+    /* VALUES FOR PID LLC */
+    static double req_acc = 4.0;   // Placeholder for requested acceleration for testing
+    double req_vel = 0.0; // Placeholder for requested velocity
+
     while (server_run == 1) {
 
         // Clean the buffer
@@ -83,7 +88,8 @@ int main(int argc, const char * argv[]) {
             double a0 = 0.;
             double sf = in->TrfLightDist;
 
-            double acc = in->ALgtFild;  // Current acceleration
+            double acc = in->ALgtFild;  // Current vehicle acceleration
+            double vel = in->VLgtFild;  // Current vehicle velocity
             
             // student_pass_primitive();
             
@@ -91,22 +97,30 @@ int main(int argc, const char * argv[]) {
             // ADD LOW LEVEL CONTROL CODE HERE
             // manoeuvre_msg.data_struct.RequestedAcc = -0.3;
             manoeuvre_msg.data_struct.RequestedSteerWhlAg = 0.0;
-
-            /*  Testing PID with reference ACCELERATION PROFILE */
-            double P_gain = 10; // TODO: test PID values
-            double I_gain = 10;
             
-            double req_acc = 0.1;   // requested acceleration for testing
+            /*  Testing PID with reference ACCELERATION PROFILE */
+            double P_gain = 0.2; // TODO: test PI values
+            double I_gain = 0.1;
+            
             double error = req_acc - acc;   // Difference between requested acceleration and actual agent accel
-            double req_ped = P_gain * error;    // Requested pedal (Proportional controller)
+            double eint = 0.0;
+            eint += error*DT;   // Integral of the error
+
+            /* Requested pedal (Proportional + Integrative controller) */
+            double req_ped = P_gain * error + I_gain * eint;
+
+            req_vel += req_acc * DT;    // Recompute requested velocity at every timestep
 
             manoeuvre_msg.data_struct.RequestedAcc = req_ped;   // NOTE: RequestedAcc === REQUESTED PEDAL
 
             // LOG FILE FOR LLC TESTING (filename = "acc_test")
-            logger.log_var("acc_test", "time", in->ECUupTime);  // logs current uptime
-            logger.log_var("acc_test", "acc", acc); // current acc
-            logger.log_var("acc_test", "req_acc", req_acc); // requested acc
-            logger.write_line("acc_test");  // Writes the actual log file
+            logger.log_var("acc_vel_test", "time", in->ECUupTime);  // logs current uptime
+            logger.log_var("acc_vel_test", "acc", acc); // current acc
+            logger.log_var("acc_vel_test", "req_acc", req_acc); // requested acc
+            logger.log_var("acc_vel_test", "vel", vel); // requested vel
+            logger.log_var("acc_vel_test", "req_vel", req_vel); // requested vel
+
+            logger.write_line("acc_vel_test");  // Writes the actual log file
 
             // Write log
             // logger.write_line("Example");
@@ -115,6 +129,7 @@ int main(int argc, const char * argv[]) {
             printLogVar(message_id, "Time", num_seconds);
             printLogVar(message_id, "Status", in->Status);
             printLogVar(message_id, "acc", acc);  // Plot acceleration on console log
+            printLogVar(message_id, "vel", req_vel);  // Plot velocity on console log
             printLogVar(message_id, "CycleNumber", in->CycleNumber);
 
             // Send manoeuvre message to the environment
