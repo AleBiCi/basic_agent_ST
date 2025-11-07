@@ -90,6 +90,8 @@ int main(int argc, const char * argv[]) {
 
             double acc = in->ALgtFild;  // Current vehicle acceleration
             double vel = in->VLgtFild;  // Current vehicle velocity
+            double t_curr = in->ECUupTime;  // Current simulation time
+            double coef[4]; // Optimal control coefficients
             
             // student_pass_primitive();
             
@@ -110,6 +112,18 @@ int main(int argc, const char * argv[]) {
             double req_ped = P_gain * error + I_gain * eint;
 
             req_vel += req_acc * DT;    // Recompute requested velocity at every timestep
+            
+            /*  PRIMITIVES TEST   */
+            // TODO: Include s_opt v_opt a_opt j_opt + coef_list_fun primitives to codegen
+            double final_time = 20.;
+            /*
+                OPTIMAL CONTROL OF req_vel and req_acc
+                req_vel = v_opt(DT, vel, acc, sf, 20, 0, final_time - t_curr);    // COMPUTE for EACH TIMESTEP DT; tf HAS TO UPDATE @ EACH TIME STEP
+                req_acc = a_opt(DT, vel, acc, sf, 20, 0, final_time - t_curr);
+
+                coef = coef_list_fun(...); // SAVE THESE LATER IN THE LOG
+            */
+
 
             manoeuvre_msg.data_struct.RequestedAcc = req_ped;   // NOTE: RequestedAcc === REQUESTED PEDAL
 
