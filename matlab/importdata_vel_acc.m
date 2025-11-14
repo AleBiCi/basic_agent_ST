@@ -9,7 +9,7 @@ function accveltest = importdata_vel_acc(filename, dataLines)
 %  for dis-contiguous row intervals.
 %
 %  Example:
-%  accveltest = importfile("/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/log_internal/acc_vel_test.csv", [1, Inf]);
+%  accveltest = importdata_vel_acc("/Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/log_internal/acc_vel_test.csv", [1, Inf]);
 %
 %  See also READTABLE.
 %

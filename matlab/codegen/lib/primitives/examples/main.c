@@ -56,36 +56,53 @@ int main(int argc, char **argv)
    * function. So, a call to initialize is not included here. */
   /* Invoke the entry-point functions.
 You can call entry-point functions multiple times. */
+  main_a_opt();
+  main_coef_list_fun();
   main_student_pass_primitive();
   main_student_stop_primitive();
+  main_v_opt();
   /* Terminate the application.
 You do not need to do this more than one time. */
   primitives_terminate();
   return 0;
 }
 
+void main_a_opt(void)
+{
+  double t_tmp;
+  /* Initialize function 'a_opt' input arguments. */
+  t_tmp = argInit_real_T();
+  /* Call the entry-point 'a_opt'. */
+  t_tmp = a_opt(t_tmp, t_tmp, t_tmp, t_tmp, t_tmp, t_tmp, t_tmp);
+}
+
+void main_coef_list_fun(void)
+{
+  double coef_list_var[6];
+  double v0_tmp;
+  /* Initialize function 'coef_list_fun' input arguments. */
+  v0_tmp = argInit_real_T();
+  /* Call the entry-point 'coef_list_fun'. */
+  coef_list_fun(v0_tmp, v0_tmp, v0_tmp, v0_tmp, v0_tmp, v0_tmp, coef_list_var);
+}
+
 void main_student_pass_primitive(void)
 {
-  creal_T coeffsT1_data[36];
-  creal_T coeffsT2_data[36];
-  creal_T T1_data[4];
-  creal_T T2_data[4];
-  creal_T v1_data[4];
-  creal_T v2_data[4];
+  double coeffsT1_data[36];
+  double coeffsT2_data[36];
+  double T1;
+  double T2;
   double v0_tmp;
+  double v1;
+  double v2;
   int coeffsT1_size[2];
   int coeffsT2_size[2];
-  int T1_size;
-  int T2_size;
-  int v1_size;
-  int v2_size;
   /* Initialize function 'student_pass_primitive' input arguments. */
   v0_tmp = argInit_real_T();
   /* Call the entry-point 'student_pass_primitive'. */
   student_pass_primitive(v0_tmp, v0_tmp, v0_tmp, v0_tmp, v0_tmp, v0_tmp, v0_tmp,
-                         coeffsT2_data, coeffsT2_size, v2_data, &v2_size,
-                         T2_data, &T2_size, coeffsT1_data, coeffsT1_size,
-                         v1_data, &v1_size, T1_data, &T1_size);
+                         coeffsT2_data, coeffsT2_size, &v2, &T2, coeffsT1_data,
+                         coeffsT1_size, &v1, &T1);
 }
 
 void main_student_stop_primitive(void)
@@ -98,6 +115,15 @@ void main_student_stop_primitive(void)
   v0_tmp = argInit_real_T();
   /* Call the entry-point 'student_stop_primitive'. */
   student_stop_primitive(v0_tmp, v0_tmp, v0_tmp, coefs, &maxsf, &tf);
+}
+
+void main_v_opt(void)
+{
+  double t_tmp;
+  /* Initialize function 'v_opt' input arguments. */
+  t_tmp = argInit_real_T();
+  /* Call the entry-point 'v_opt'. */
+  t_tmp = v_opt(t_tmp, t_tmp, t_tmp, t_tmp, t_tmp, t_tmp, t_tmp);
 }
 
 /* End of code generation (main.c) */

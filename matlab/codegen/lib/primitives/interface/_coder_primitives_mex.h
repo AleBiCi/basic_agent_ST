@@ -5,7 +5,7 @@
  *
  * _coder_primitives_mex.h
  *
- * Code generation for function 'student_pass_primitive'
+ * Code generation for function 'a_opt'
  *
  */
 
@@ -27,6 +27,12 @@ MEXFUNCTION_LINKAGE void mexFunction(int32_T nlhs, mxArray *plhs[],
 
 emlrtCTX mexFunctionCreateRootTLS(void);
 
+void unsafe_a_opt_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
+                              const mxArray *prhs[7]);
+
+void unsafe_coef_list_fun_mexFunction(int32_T nlhs, mxArray *plhs[1],
+                                      int32_T nrhs, const mxArray *prhs[6]);
+
 void unsafe_student_pass_primitive_mexFunction(int32_T nlhs, mxArray *plhs[6],
                                                int32_T nrhs,
                                                const mxArray *prhs[7]);
@@ -34,6 +40,9 @@ void unsafe_student_pass_primitive_mexFunction(int32_T nlhs, mxArray *plhs[6],
 void unsafe_student_stop_primitive_mexFunction(int32_T nlhs, mxArray *plhs[3],
                                                int32_T nrhs,
                                                const mxArray *prhs[3]);
+
+void unsafe_v_opt_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
+                              const mxArray *prhs[7]);
 
 #ifdef __cplusplus
 }

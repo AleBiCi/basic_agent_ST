@@ -5,7 +5,7 @@
  *
  * rt_nonfinite.h
  *
- * Code generation for function 'student_pass_primitive'
+ * Code generation for function 'a_opt'
  *
  */
 
