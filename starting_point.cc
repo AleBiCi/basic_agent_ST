@@ -83,20 +83,52 @@ int main(int argc, const char * argv[]) {
             logger.log_var("Example", "vel", in->VLgtFild);
             
             
-            // ADD AGENT CODE HERE
+        // ADD AGENT CODE HERE
             double v0 = 0.;
             double a0 = 0.;
-            double sf = in->TrfLightDist;
+            double dist = in->TrfLightDist;
+            static double init_dist = dist;
+            double s = init_dist - dist;
 
             double acc = in->ALgtFild;  // Current vehicle acceleration
             double vel = in->VLgtFild;  // Current vehicle velocity
             double t_curr = in->ECUupTime;  // Current simulation time
             double coef[4]; // Optimal control coefficients
+                     
+        /*  PRIMITIVES TEST   */
+            // TODO: Include s_opt v_opt a_opt j_opt + coef_list_fun primitives to codegen
+            double final_time = 20.;
+            /*
+                OPTIMAL CONTROL OF req_vel and req_acc
+                req_vel = v_opt(DT, vel, acc, sf, 20, 0, final_time - t_curr);    // COMPUTE for EACH TIMESTEP DT; tf HAS TO UPDATE @ EACH TIME STEP
+                req_acc = a_opt(DT, vel, acc, sf, 20, 0, final_time - t_curr);
+
+                coef = coef_list_fun(...); // SAVE THESE LATER IN THE LOG
+            */
+
+            /*
+                ACTUALLY COMPUTING req_acc FROM PRIMITIVES
+                double coefs[6];
+                // Final (output) values
+                double ftime;
+                double fdist;
+                double fvel;
+
+                if (dist < 50) {
+                    student_stop_primitive(vel, acc, dist, coefs, &fdist, &ftime);
+                } else {
+                    student_pass_primitive(vel, acc, dist, 15.0, 15.0, 0.0, 0.0, coefs, &fvel, &fdist, coefs, &fvel, &fdist);  
+                    // w/ init and final time = 0. --> free-running primitive
+                    // If we have 2 different final velocities (fvmin != fvmax) then we pass different values for &fvel, &fdist and coefs
+                }
+
+                double req_acc = coeffs_a_opt(DT, coefs);
+                // we compute req_vel based on this req_acc
+            */
+        /*  PRIMITIVES TEST OVER    */
+
             
-            // student_pass_primitive();
-            
-            
-            // ADD LOW LEVEL CONTROL CODE HERE
+        // ADD LOW LEVEL CONTROL CODE HERE
             // manoeuvre_msg.data_struct.RequestedAcc = -0.3;
             manoeuvre_msg.data_struct.RequestedSteerWhlAg = 0.0;
             
@@ -113,21 +145,9 @@ int main(int argc, const char * argv[]) {
 
             req_vel += req_acc * DT;    // Recompute requested velocity at every timestep
             
-            /*  PRIMITIVES TEST   */
-            // TODO: Include s_opt v_opt a_opt j_opt + coef_list_fun primitives to codegen
-            double final_time = 20.;
-            /*
-                OPTIMAL CONTROL OF req_vel and req_acc
-                req_vel = v_opt(DT, vel, acc, sf, 20, 0, final_time - t_curr);    // COMPUTE for EACH TIMESTEP DT; tf HAS TO UPDATE @ EACH TIME STEP
-                req_acc = a_opt(DT, vel, acc, sf, 20, 0, final_time - t_curr);
-
-                coef = coef_list_fun(...); // SAVE THESE LATER IN THE LOG
-            */
-
-
             manoeuvre_msg.data_struct.RequestedAcc = req_ped;   // NOTE: RequestedAcc === REQUESTED PEDAL
 
-            // LOG FILE FOR LLC TESTING (filename = "acc_test")
+        // LOG FILE FOR LLC TESTING (filename = "acc_test")
             logger.log_var("acc_vel_test", "time", in->ECUupTime);  // logs current uptime
             logger.log_var("acc_vel_test", "acc", acc); // current acc
             logger.log_var("acc_vel_test", "req_acc", req_acc); // requested acc
