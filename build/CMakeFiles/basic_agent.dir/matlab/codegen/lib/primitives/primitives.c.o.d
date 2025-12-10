@@ -97,14 +97,4 @@ CMakeFiles/basic_agent.dir/matlab/codegen/lib/primitives/primitives.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_dev_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_mode_t.h \
   /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/primitives/rt_nonfinite.h \
-  /Users/alessandrobianchiceriani/Desktop/Scrivania_MPB/ALE_VARIE_DONTTOUCH/UNITN/MAGISTRALE/Secondo_Anno/IVAD/Repos/basic_agent_ST/matlab/codegen/lib/primitives/rt_defines.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/string.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_string.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_rsize_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_errno_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ssize_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_strings.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_strings.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_common.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_string.h
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/math.h

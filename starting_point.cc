@@ -57,7 +57,7 @@ int main(int argc, const char * argv[]) {
     printLine();
 
     /* VALUES FOR PID LLC */
-    static double req_acc = 4.0;   // Placeholder for requested acceleration for testing
+    // static double req_acc = 4.0;   // Placeholder for requested acceleration for testing
     double req_vel = 0.0; // Placeholder for requested velocity
 
     while (server_run == 1) {
@@ -93,38 +93,34 @@ int main(int argc, const char * argv[]) {
             double acc = in->ALgtFild;  // Current vehicle acceleration
             double vel = in->VLgtFild;  // Current vehicle velocity
             double t_curr = in->ECUupTime;  // Current simulation time
-            double coef[4]; // Optimal control coefficients
+            double coef[6]; // Optimal control coefficients
                      
         /*  PRIMITIVES TEST   */
-            // TODO: Include s_opt v_opt a_opt j_opt + coef_list_fun primitives to codegen
-            double final_time = 20.;
-            /*
-                OPTIMAL CONTROL OF req_vel and req_acc
-                req_vel = v_opt(DT, vel, acc, sf, 20, 0, final_time - t_curr);    // COMPUTE for EACH TIMESTEP DT; tf HAS TO UPDATE @ EACH TIME STEP
-                req_acc = a_opt(DT, vel, acc, sf, 20, 0, final_time - t_curr);
+            // double final_time = 20.;
+            // double req_acc;
+            // // OPTIMAL CONTROL OF req_vel and req_acc
+            // req_vel = v_opt(DT, vel, acc, dist, 20, 0, final_time - t_curr);    // COMPUTE for EACH TIMESTEP DT; tf HAS TO UPDATE @ EACH TIME STEP
+            // req_acc = a_opt(DT, vel, acc, dist, 20, 0, final_time - t_curr);
 
-                coef = coef_list_fun(...); // SAVE THESE LATER IN THE LOG
-            */
+            // coef_list_fun(v0, a0, dist, req_vel, req_acc, final_time, coef); // SAVE THESE LATER IN THE LOG
 
-            /*
-                ACTUALLY COMPUTING req_acc FROM PRIMITIVES
-                double coefs[6];
-                // Final (output) values
-                double ftime;
-                double fdist;
-                double fvel;
+            // ACTUALLY COMPUTING req_acc FROM PRIMITIVES
+            double coefs[6];
+            // Final (output) values
+            double ftime;
+            double fdist;
+            double fvel;
 
-                if (dist < 50) {
-                    student_stop_primitive(vel, acc, dist, coefs, &fdist, &ftime);
-                } else {
-                    student_pass_primitive(vel, acc, dist, 15.0, 15.0, 0.0, 0.0, coefs, &fvel, &fdist, coefs, &fvel, &fdist);  
-                    // w/ init and final time = 0. --> free-running primitive
-                    // If we have 2 different final velocities (fvmin != fvmax) then we pass different values for &fvel, &fdist and coefs
-                }
+            if (dist < 50) {
+                student_stop_primitive(vel, acc, dist, coefs, &fdist, &ftime);
+            } else {
+                student_pass_primitive(vel, acc, dist, 15.0, 15.0, 0.0, 0.0, coefs, &fvel, &fdist, coefs, &fvel, &fdist);  
+                // w/ init and final time = 0. --> free-running primitive
+                // If we have 2 different final velocities (fvmin != fvmax) then we pass different values for &fvel, &fdist and coefs
+            }
 
-                double req_acc = coeffs_a_opt(DT, coefs);
-                // we compute req_vel based on this req_acc
-            */
+            double req_acc = coeffs_a_opt(DT, coefs);
+            // we compute req_vel based on this req_acc
         /*  PRIMITIVES TEST OVER    */
 
             
@@ -153,6 +149,11 @@ int main(int argc, const char * argv[]) {
             logger.log_var("acc_vel_test", "req_acc", req_acc); // requested acc
             logger.log_var("acc_vel_test", "vel", vel); // requested vel
             logger.log_var("acc_vel_test", "req_vel", req_vel); // requested vel
+            logger.log_var("acc_vel_test", "c1", coef[1]); // resulting coefficients
+            logger.log_var("acc_vel_test", "c2", coef[2]); // resulting coefficients
+            logger.log_var("acc_vel_test", "c3", coef[3]); // resulting coefficients
+            logger.log_var("acc_vel_test", "c4", coef[4]); // resulting coefficients
+            logger.log_var("acc_vel_test", "c5", coef[5]); // resulting coefficients
 
             logger.write_line("acc_vel_test");  // Writes the actual log file
 

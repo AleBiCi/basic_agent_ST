@@ -25,6 +25,16 @@ typedef struct {
 #else
 typedef struct __attribute__((packed)) {
 #endif
+/*
+ __        ___    ____  _   _ ___ _   _  ____ 
+ \ \      / / \  |  _ \| \ | |_ _| \ | |/ ___|
+  \ \ /\ / / _ \ | |_) |  \| || ||  \| | |  _ 
+   \ V  V / ___ \|  _ <| |\  || || |\  | |_| |
+    \_/\_/_/   \_\_| \_\_| \_|___|_| \_|\____|
+
+DO NOT MODIFY THIS INTERFACE --> it would have to be recompiled
+*/
+
   int32_t ID; /* Enumeration 
 1=Scenario message
 2=Manoeuvre message, */
@@ -42,6 +52,8 @@ typedef struct __attribute__((packed)) {
   int32_t AutomationLevel; /* 0 = NO AUTOMATION, 1 = ASSISTED, 2 = PARTIAL AUTOMATION, 3 = CONDITIONAL AUTOMATION, 4 = HIGH AUTOMATION, 5 = FULL AUTOMATION, 6 = UNKNOWN  */
   int32_t CurrentLane; /* Nomenclature from ADASIS: 0 = Unknown, 1 = Emergency lane, 2 = Single-lane road, 3 = Left-most lane, 4 = Right-most lane, 5 = One of middle lanes on road with three or more lanes */
   int32_t NrObjs; /* Limited to 20 max number of objects, selection needed (if more might be limited to nearest objects) */
+  /* Obstacles */
+  // TODO: CREATE a GPS object w/ the ABSOLUTE (world) coordinates of the vehicle
   int32_t ObjID[20];
   double ObjX[20]; /* Center of the object */
   double ObjY[20]; /* Centre of the object */
