@@ -33,9 +33,22 @@ void unsafe_a_opt_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
 void unsafe_coef_list_fun_mexFunction(int32_T nlhs, mxArray *plhs[1],
                                       int32_T nrhs, const mxArray *prhs[6]);
 
+void unsafe_s_opt_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
+                              const mxArray *prhs[7]);
+
+void unsafe_student_pass_primitive_j0_mexFunction(int32_T nlhs,
+                                                  mxArray *plhs[3],
+                                                  int32_T nrhs,
+                                                  const mxArray *prhs[5]);
+
 void unsafe_student_pass_primitive_mexFunction(int32_T nlhs, mxArray *plhs[6],
                                                int32_T nrhs,
                                                const mxArray *prhs[7]);
+
+void unsafe_student_stop_primitive_j0_mexFunction(int32_T nlhs,
+                                                  mxArray *plhs[3],
+                                                  int32_T nrhs,
+                                                  const mxArray *prhs[2]);
 
 void unsafe_student_stop_primitive_mexFunction(int32_T nlhs, mxArray *plhs[3],
                                                int32_T nrhs,

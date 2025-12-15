@@ -53,9 +53,15 @@ extern void main_a_opt(void);
 
 extern void main_coef_list_fun(void);
 
+extern void main_s_opt(void);
+
 extern void main_student_pass_primitive(void);
 
+extern void main_student_pass_primitive_j0(void);
+
 extern void main_student_stop_primitive(void);
+
+extern void main_student_stop_primitive_j0(void);
 
 extern void main_v_opt(void);
 

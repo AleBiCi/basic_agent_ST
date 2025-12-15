@@ -58,8 +58,11 @@ int main(int argc, char **argv)
 You can call entry-point functions multiple times. */
   main_a_opt();
   main_coef_list_fun();
+  main_s_opt();
   main_student_pass_primitive();
+  main_student_pass_primitive_j0();
   main_student_stop_primitive();
+  main_student_stop_primitive_j0();
   main_v_opt();
   /* Terminate the application.
 You do not need to do this more than one time. */
@@ -86,6 +89,15 @@ void main_coef_list_fun(void)
   coef_list_fun(v0_tmp, v0_tmp, v0_tmp, v0_tmp, v0_tmp, v0_tmp, coef_list_var);
 }
 
+void main_s_opt(void)
+{
+  double t_tmp;
+  /* Initialize function 's_opt' input arguments. */
+  t_tmp = argInit_real_T();
+  /* Call the entry-point 's_opt'. */
+  t_tmp = s_opt(t_tmp, t_tmp, t_tmp, t_tmp, t_tmp, t_tmp, t_tmp);
+}
+
 void main_student_pass_primitive(void)
 {
   double coeffsT1_data[36];
@@ -105,6 +117,18 @@ void main_student_pass_primitive(void)
                          coeffsT1_size, &v1, &T1);
 }
 
+void main_student_pass_primitive_j0(void)
+{
+  double coefsj0[6];
+  double tfj0;
+  double vfj0;
+  /* Initialize function 'student_pass_primitive_j0' input arguments. */
+  vfj0 = argInit_real_T();
+  /* Call the entry-point 'student_pass_primitive_j0'. */
+  student_pass_primitive_j0(vfj0, vfj0, vfj0, vfj0, vfj0, coefsj0, &vfj0,
+                            &tfj0);
+}
+
 void main_student_stop_primitive(void)
 {
   double coefs[6];
@@ -115,6 +139,18 @@ void main_student_stop_primitive(void)
   v0_tmp = argInit_real_T();
   /* Call the entry-point 'student_stop_primitive'. */
   student_stop_primitive(v0_tmp, v0_tmp, v0_tmp, coefs, &maxsf, &tf);
+}
+
+void main_student_stop_primitive_j0(void)
+{
+  double coefsj0[6];
+  double sfj0;
+  double tfj0;
+  double v0_tmp;
+  /* Initialize function 'student_stop_primitive_j0' input arguments. */
+  v0_tmp = argInit_real_T();
+  /* Call the entry-point 'student_stop_primitive_j0'. */
+  student_stop_primitive_j0(v0_tmp, v0_tmp, coefsj0, &sfj0, &tfj0);
 }
 
 void main_v_opt(void)

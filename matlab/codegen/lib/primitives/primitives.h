@@ -32,6 +32,9 @@ extern void primitives_initialize(void);
 
 extern void primitives_terminate(void);
 
+extern double s_opt(double t, double v0, double a0, double sf, double vf,
+                    double af, double T);
+
 extern void student_pass_primitive(double v0, double a0, double sf,
                                    double vfmin, double vfmax, double Tmin,
                                    double Tmax, double coeffsT2_data[],
@@ -39,8 +42,16 @@ extern void student_pass_primitive(double v0, double a0, double sf,
                                    double coeffsT1_data[], int coeffsT1_size[2],
                                    double *v1, double *T1);
 
+extern void student_pass_primitive_j0(double v0, double a0, double sf,
+                                      double vfmin, double vfmax,
+                                      double coefsj0[6], double *vfj0,
+                                      double *tfj0);
+
 extern void student_stop_primitive(double v0, double a0, double sf,
                                    double coefs[6], double *maxsf, double *tf);
+
+extern void student_stop_primitive_j0(double v0, double a0, double coefsj0[6],
+                                      double *sfj0, double *tfj0);
 
 extern double v_opt(double t, double v0, double a0, double sf, double vf,
                     double af, double T);
