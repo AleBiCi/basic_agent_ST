@@ -12,6 +12,7 @@ include_directories(
         matlab
         lib
         log
+        hlp
 )
 
 link_directories(
@@ -25,6 +26,9 @@ add_executable(basic_agent
         starting_point.cc
         matlab/codegen/lib/primitives/primitives.c
         matlab/codegen/lib/primitives/rt_nonfinite.c
+        hlp/rrt_star.cc
+        hlp/pose_estimator.cc
+        hlp/hlp.cc
     )
 
 
@@ -35,4 +39,12 @@ target_compile_options(basic_agent
         )
 
 set_target_properties(basic_agent PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${AGENT_FOLDER})
+# ------------------------------------------------------------------------------------
+
+# ------------------------- RRT* offline test (no simulator) -------------------------
+add_executable(rrt_star_test
+        hlp/rrt_star_test.cc
+        hlp/rrt_star.cc
+    )
+set_target_properties(rrt_star_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${AGENT_FOLDER})
 # ------------------------------------------------------------------------------------
