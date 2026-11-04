@@ -1,6 +1,10 @@
 // Vehicle pose in the planning frame W0 for the high-level planner.
 //
-// The scenario message has no absolute pose. W0 is the vehicle frame at the first received
+// Preferred source: the simulator's ego "GPS" pseudo-object (ObjID 5, see my_PyDrivingSim/pydrivingsim/agent.py):
+// ObjX/ObjY = world position [m], ObjCourse = world yaw [rad]. If it is in the first message, W0 is the
+// simulator world frame and every cycle copies the GPS pose (dead reckoning below if it goes missing).
+//
+// Fallback without GPS: W0 is the vehicle frame at the first received
 // cycle (origin on the vehicle position, x forward, y left), so at that cycle the objects'
 // ObjX/ObjY are already their W0 coordinates. Later cycles:
 //   - heading psi: LaneHeading0 - LaneHeading (the simulator sends LaneHeading = -yaw, see
@@ -19,6 +23,7 @@
 #include "interfaces_data_structs.h"
 
 #define POSE_MAX_LANDMARKS 20   // = size of ObjID[] in input_data_str
+#define OBJ_ID_GPS          5    // ego pose pseudo-object sent by the simulator
 
 class PoseEstimator {
 public:
@@ -33,7 +38,9 @@ public:
     void vehicle_to_world(double xv, double yv, double *xw, double *yw) const;
 
     double x, y, psi;       // pose in W0 [m, m, rad]
-    int landmarks_used;     // 0 -> last update was dead reckoning
+    int landmarks_used;     // 0 -> last update was dead reckoning (or GPS, see gps_used)
+    bool gps_mode;          // W0 = simulator world frame, pose from the GPS object
+    bool gps_used;          // last update read the GPS object
 
 private:
     bool   init_done;
@@ -41,6 +48,8 @@ private:
     int    n_lm;
     int    lm_id[POSE_MAX_LANDMARKS];
     double lm_x[POSE_MAX_LANDMARKS], lm_y[POSE_MAX_LANDMARKS];
+
+    static int find_gps(const input_data_str *in);   // index of the GPS object, -1 if absent
 };
 
 #endif

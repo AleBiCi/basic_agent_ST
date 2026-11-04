@@ -15,9 +15,31 @@ static double wrap_pi(double a) {
 }
 
 PoseEstimator::PoseEstimator()
-    : x(0.), y(0.), psi(0.), landmarks_used(0), init_done(false), lane_heading0(0.), n_lm(0) {}
+    : x(0.), y(0.), psi(0.), landmarks_used(0), gps_mode(false), gps_used(false), init_done(false),
+      lane_heading0(0.), n_lm(0) {}
+
+int PoseEstimator::find_gps(const input_data_str *in) {
+    int n = in->NrObjs < POSE_MAX_LANDMARKS ? in->NrObjs : POSE_MAX_LANDMARKS;
+    for (int i = 0; i < n; i++)
+        if (in->ObjID[i] == OBJ_ID_GPS) return i;
+    return -1;
+}
 
 void PoseEstimator::init(const input_data_str *in) {
+    init_done = true;
+    int g = find_gps(in);
+    if (g >= 0) {
+        // W0 = world frame: LaneHeading = -yaw, so lane_heading0 = 0 gives psi = yaw in update()
+        gps_mode = true;
+        gps_used = true;
+        lane_heading0 = 0.;
+        n_lm = 0;
+        landmarks_used = 0;
+        x = in->ObjX[g]; y = in->ObjY[g]; psi = wrap_pi(in->ObjCourse[g]);
+        return;
+    }
+    gps_mode = false;
+    gps_used = false;
     x = 0.; y = 0.; psi = 0.;
     lane_heading0 = in->LaneHeading;
     n_lm = in->NrObjs;
@@ -29,10 +51,18 @@ void PoseEstimator::init(const input_data_str *in) {
         lm_y[i] = in->ObjY[i];
     }
     landmarks_used = n_lm;
-    init_done = true;
 }
 
 void PoseEstimator::update(const input_data_str *in, double dt) {
+    if (gps_mode) {
+        int g = find_gps(in);
+        gps_used = (g >= 0);
+        if (gps_used) {
+            x = in->ObjX[g]; y = in->ObjY[g]; psi = wrap_pi(in->ObjCourse[g]);
+            landmarks_used = 0;
+            return;
+        }
+    }
     psi = wrap_pi(lane_heading0 - in->LaneHeading);
     double c = cos(psi), s = sin(psi);
 

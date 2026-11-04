@@ -2,7 +2,8 @@
 // (04_Planning_and_Control_Overview, "General planning & control framework": HLP block).
 //
 // Simulator object IDs (my_PyDrivingSim/pydrivingsim/agent.py):
-//   1 = cone (obstacle), 2 = coin (waypoint, ignored here), 3 = target, 4 = off-road obstacle.
+//   1 = cone (obstacle), 2 = coin (waypoint, ignored here), 3 = target, 4 = off-road obstacle,
+//   5 = ego GPS pseudo-object (read by PoseEstimator, ignored here).
 // Obstacle footprint radius = max(ObjLen, ObjWidth) / 2.
 
 #ifndef HLP_H
