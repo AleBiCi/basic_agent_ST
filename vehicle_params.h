@@ -5,7 +5,7 @@
 #ifndef VEHICLE_PARAMS_H
 #define VEHICLE_PARAMS_H
 
-#define VEHICLE_SET 0   // TODO(dev): pick the set, same as the simulator
+#define VEHICLE_SET 3   // TODO(dev): pick the set, same as the simulator
 
 #if VEHICLE_SET == 1        // "polaris_utv"
 static const double VEH_LF         = 1.5515;        // [m] CoM to front axle

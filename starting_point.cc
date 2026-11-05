@@ -7,6 +7,7 @@
 #include <math.h>
 #include <vector>
 #include <algorithm>
+#include <chrono>
 
 extern "C" {
 #include "screen_print_c.h"
@@ -18,6 +19,15 @@ extern "C" {
 // --- MATLAB PRIMITIVES INCLUDE ---
 #include "primitives.h"
 // --- MATLAB PRIMITIVES INCLUDE ---
+
+// --- HIGH-LEVEL PLANNER (RRT*) ---
+#include "hlp.h"
+
+// --- LONGITUDINAL CONTROL (primitives + LLC) ---
+#include "longitudinal.h"
+// --- LATERAL CONTROL (kinematic Stanley) ---
+#include "lateral.h"
+#include "vehicle_params.h"
 
 #define DEFAULT_SERVER_IP    "127.0.0.1"
 #define SERVER_PORT               30000  // Server port
@@ -56,10 +66,6 @@ int main(int argc, const char * argv[]) {
     printTable("Waiting for scenario message...", 0);
     printLine();
 
-    /* VALUES FOR PID LLC */
-    // static double req_acc = 4.0;   // Placeholder for requested acceleration for testing
-    double req_vel = 0.0; // Placeholder for requested velocity
-
     while (server_run == 1) {
 
         // Clean the buffer
@@ -84,77 +90,101 @@ int main(int argc, const char * argv[]) {
             
             
         // ADD AGENT CODE HERE
-            double v0 = 0.;
-            double a0 = 0.;
-            double dist = in->TrfLightDist;
-            static double init_dist = dist;
-            double s = init_dist - dist;
-
-            double acc = in->ALgtFild;  // Current vehicle acceleration
-            double vel = in->VLgtFild;  // Current vehicle velocity
-            double t_curr = in->ECUupTime;  // Current simulation time
-            double coef[6]; // Optimal control coefficients
-                     
-        /*  PRIMITIVES TEST   */
-            // double final_time = 20.;
-            // double req_acc;
-            // // OPTIMAL CONTROL OF req_vel and req_acc
-            // req_vel = v_opt(DT, vel, acc, dist, 20, 0, final_time - t_curr);    // COMPUTE for EACH TIMESTEP DT; tf HAS TO UPDATE @ EACH TIME STEP
-            // req_acc = a_opt(DT, vel, acc, dist, 20, 0, final_time - t_curr);
-
-            // coef_list_fun(v0, a0, dist, req_vel, req_acc, final_time, coef); // SAVE THESE LATER IN THE LOG
-
-            // ACTUALLY COMPUTING req_acc FROM PRIMITIVES
-            double coefs[6];
-            // Final (output) values
-            double ftime;
-            double fdist;
-            double fvel;
-
-            if (dist < 50) {
-                student_stop_primitive(vel, acc, dist, coefs, &fdist, &ftime);
-            } else {
-                student_pass_primitive(vel, acc, dist, 15.0, 15.0, 0.0, 0.0, coefs, &fvel, &fdist, coefs, &fvel, &fdist);  
-                // w/ init and final time = 0. --> free-running primitive
-                // If we have 2 different final velocities (fvmin != fvmax) then we pass different values for &fvel, &fdist and coefs
+            // --- HIGH-LEVEL PLANNER: pose in W0, RRT* to the target (ObjID 3), path -> trajectory points ---
+            static PoseEstimator pose;
+            static RrtStar rrt;             // ~170 kB node pool: static, not on the stack
+            static RrtPath path;
+            static int hlp_status = HLP_NOT_RUN;
+            static int path_idx = 0;
+            if (!pose.initialised()) pose.init(in); else pose.update(in, DT);
+            if (hlp_status == HLP_NOT_RUN) {
+                // Plan once from the first pose. TODO(dev): replanning policy (target moved, path blocked).
+                hlp_status = hlp_plan(in, pose, hlp_default_params(in), rrt, &path);
+                printLogVar(message_id, "RRT* status", hlp_status);
+                printLogVar(message_id, "RRT* length", path.length);
             }
+            // --- PRE-RUN MAP PREVIEW (my_PyDrivingSim MapScenario, vehicle frozen until Start) ---
+            //     AutomationLevel = -(page + 1) asks for one page of the whole path (hlp_path_page);
+            //     no control, no logs. ManoeuverType = HLP_PREVIEW_ACK + HLP status.
+            if (in->AutomationLevel < 0) {
+                manoeuvre_msg.data_struct.NTrajectoryPoints = 0;
+                if (hlp_status == RRTS_OK)
+                    hlp_path_page(&path, pose, -in->AutomationLevel - 1, &manoeuvre_msg.data_struct);
+                manoeuvre_msg.data_struct.ManoeuverType = HLP_PREVIEW_ACK + hlp_status;
+                manoeuvre_msg.data_struct.RequestedAcc = 0.;
+                manoeuvre_msg.data_struct.RequestedSteerWhlAg = 0.;
+                if (server_send_to_client(server_run, message_id, &manoeuvre_msg.data_struct) == -1) {
+                    perror("error send_message()");
+                    exit(EXIT_FAILURE);
+                }
+                continue;
+            }
+            if (hlp_status == RRTS_OK) {
+                hlp_path_to_trajectory(&path, pose, &path_idx, &manoeuvre_msg.data_struct);
+            } else {
+                manoeuvre_msg.data_struct.NTrajectoryPoints = 0;
+            }
+            logger.log_var("hlp", "time", in->ECUupTime);
+            logger.log_var("hlp", "x", pose.x);
+            logger.log_var("hlp", "y", pose.y);
+            logger.log_var("hlp", "psi", pose.psi);
+            logger.log_var("hlp", "landmarks", pose.landmarks_used);
+            logger.log_var("hlp", "gps", pose.gps_used ? 1 : 0);
+            logger.log_var("hlp", "path_idx", path_idx);
+            logger.write_line("hlp");
 
-            double req_acc = coeffs_a_opt(DT, coefs);
-            // we compute req_vel based on this req_acc
-        /*  PRIMITIVES TEST OVER    */
+            // --- LONGITUDINAL: action priming + selection (project_info slides 47-60, 104-106),
+            //     LLC: trapezoidal integrated jerk with internal a0 + PI on the pedal (slides 68-69) ---
+            const double v0 = in->VLgtFild;     // slide 104 line 1
+            const double a0 = in->ALgtFild;     // slide 104 line 2
+            static LgtLlc llc = {false, 0., 0., 0.};
+            const LgtParams lp = lgt_default_params(in);
 
-            
-        // ADD LOW LEVEL CONTROL CODE HERE
-            // manoeuvre_msg.data_struct.RequestedAcc = -0.3;
-            manoeuvre_msg.data_struct.RequestedSteerWhlAg = 0.0;
-            
-            /*  Testing PID with reference ACCELERATION PROFILE */
-            double P_gain = 0.2; // TODO: test PI values
-            double I_gain = 0.1;
-            
-            double error = req_acc - acc;   // Difference between requested acceleration and actual agent accel
-            double eint = 0.0;
-            eint += error*DT;   // Integral of the error
+            // Stop point = RRT* goal: remaining path length, else straight line to ObjID 3 (-1 = none)
+            double s_target = (hlp_status == RRTS_OK) ? lgt_path_remaining(&path, pose, path_idx)
+                                                      : lgt_target_distance(in);
+            double m_star[6];
+            double T_star;
+            int behaviour = lgt_select(v0, a0, s_target, lp, m_star, &T_star);
+            double req_ped = lgt_llc_step(&llc, behaviour != LGT_NONE ? m_star : nullptr,
+                                          v0, a0, DT, lp);
 
-            /* Requested pedal (Proportional + Integrative controller) */
-            double req_ped = P_gain * error + I_gain * eint;
-
-            req_vel += req_acc * DT;    // Recompute requested velocity at every timestep
-            
             manoeuvre_msg.data_struct.RequestedAcc = req_ped;   // NOTE: RequestedAcc === REQUESTED PEDAL
+            // --- LATERAL: kinematic Stanley on the RRT* path (05_Low_Level_MotionPlanning p. 43-44) ---
+            static LatState lat = {0, 0., 0., 0.};
+            const LatParams latp = lat_default_params();
+            double delta_req = 0.;      // [rad] front-wheel angle
+            int lat_status = LAT_NO_PATH;
+            if (hlp_status == RRTS_OK)
+                lat_status = lat_stanley_step(&lat, &path, pose,
+                                              lat_front_speed(in->VLgtFild, in->SteerWhlAg), latp, &delta_req);
+            // The simulator reads RequestedSteerWhlAg as a steering-wheel angle (front wheel = request / tau_D)
+            manoeuvre_msg.data_struct.RequestedSteerWhlAg = VEH_STEER_RATIO * delta_req;
 
-        // LOG FILE FOR LLC TESTING (filename = "acc_test")
-            logger.log_var("acc_vel_test", "time", in->ECUupTime);  // logs current uptime
-            logger.log_var("acc_vel_test", "acc", acc); // current acc
-            logger.log_var("acc_vel_test", "req_acc", req_acc); // requested acc
-            logger.log_var("acc_vel_test", "vel", vel); // requested vel
-            logger.log_var("acc_vel_test", "req_vel", req_vel); // requested vel
-            logger.log_var("acc_vel_test", "c1", coef[1]); // resulting coefficients
-            logger.log_var("acc_vel_test", "c2", coef[2]); // resulting coefficients
-            logger.log_var("acc_vel_test", "c3", coef[3]); // resulting coefficients
-            logger.log_var("acc_vel_test", "c4", coef[4]); // resulting coefficients
-            logger.log_var("acc_vel_test", "c5", coef[5]); // resulting coefficients
+            logger.log_var("lat", "time", in->ECUupTime);
+            logger.log_var("lat", "status", lat_status);
+            logger.log_var("lat", "seg", lat.seg);
+            logger.log_var("lat", "e", lat.e);
+            logger.log_var("lat", "dpsi", lat.dpsi);
+            logger.log_var("lat", "delta_req", delta_req);
+            logger.log_var("lat", "delta_meas", in->SteerWhlAg);
+            logger.log_var("lat", "yaw_rate", in->YawRateFild);
+            logger.write_line("lat");
 
+            // LOG FILE FOR LLC TESTING
+            logger.log_var("acc_vel_test", "time", in->ECUupTime);
+            logger.log_var("acc_vel_test", "acc", a0);
+            logger.log_var("acc_vel_test", "req_acc", llc.a_req);
+            logger.log_var("acc_vel_test", "vel", v0);
+            logger.log_var("acc_vel_test", "req_ped", req_ped);
+            logger.log_var("acc_vel_test", "behaviour", behaviour);
+            logger.log_var("acc_vel_test", "s_target", s_target);
+            logger.log_var("acc_vel_test", "T", T_star);
+            logger.log_var("acc_vel_test", "c1", m_star[1]);
+            logger.log_var("acc_vel_test", "c2", m_star[2]);
+            logger.log_var("acc_vel_test", "c3", m_star[3]);
+            logger.log_var("acc_vel_test", "c4", m_star[4]);
+            logger.log_var("acc_vel_test", "c5", m_star[5]);
             logger.write_line("acc_vel_test");  // Writes the actual log file
 
             // Write log
@@ -163,8 +193,9 @@ int main(int argc, const char * argv[]) {
             // Screen print
             printLogVar(message_id, "Time", num_seconds);
             printLogVar(message_id, "Status", in->Status);
-            printLogVar(message_id, "acc", acc);  // Plot acceleration on console log
-            printLogVar(message_id, "vel", req_vel);  // Plot velocity on console log
+            printLogVar(message_id, "acc", a0);  // Plot acceleration on console log
+            printLogVar(message_id, "vel", v0);  // Plot velocity on console log
+            printLogVar(message_id, "behaviour", behaviour);
             printLogVar(message_id, "CycleNumber", in->CycleNumber);
 
             // Send manoeuvre message to the environment
