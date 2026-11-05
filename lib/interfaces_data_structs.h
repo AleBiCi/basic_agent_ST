@@ -53,7 +53,6 @@ DO NOT MODIFY THIS INTERFACE --> it would have to be recompiled
   int32_t CurrentLane; /* Nomenclature from ADASIS: 0 = Unknown, 1 = Emergency lane, 2 = Single-lane road, 3 = Left-most lane, 4 = Right-most lane, 5 = One of middle lanes on road with three or more lanes */
   int32_t NrObjs; /* Limited to 20 max number of objects, selection needed (if more might be limited to nearest objects) */
   /* Obstacles */
-  // TODO: CREATE a GPS object w/ the ABSOLUTE (world) coordinates of the vehicle
   int32_t ObjID[20];
   double ObjX[20]; /* Center of the object */
   double ObjY[20]; /* Centre of the object */

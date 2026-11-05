@@ -8,3 +8,6 @@ lib/libagent_lib.a
 Icon
 
 .DS_Store
+
+build/
+CMakeFiles/
