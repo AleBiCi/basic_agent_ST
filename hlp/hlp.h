@@ -34,4 +34,12 @@ int hlp_plan(const input_data_str *in, const PoseEstimator &pose, const RrtParam
 int hlp_path_to_trajectory(const RrtPath *path, const PoseEstimator &pose, int *idx,
                            output_data_str *out);
 
+// Pre-run map preview (my_PyDrivingSim, MapScenario): the simulator, still frozen, asks for the whole path
+// page by page. Writes path vertices [HLP_PREVIEW_STRIDE * page, HLP_PREVIEW_STRIDE * page + 22] in
+// TrajectoryPointIX/IY (vehicle frame); consecutive pages share one vertex so the polyline stays continuous.
+// Returns the number of points written (< 23 on the last page, 0 past the end).
+#define HLP_PREVIEW_STRIDE 22
+#define HLP_PREVIEW_ACK  1000   // preview reply: ManoeuverType = HLP_PREVIEW_ACK + HLP status
+int hlp_path_page(const RrtPath *path, const PoseEstimator &pose, int page, output_data_str *out);
+
 #endif

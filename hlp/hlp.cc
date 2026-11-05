@@ -70,3 +70,18 @@ int hlp_path_to_trajectory(const RrtPath *path, const PoseEstimator &pose, int *
     out->NTrajectoryPoints = k;
     return k;
 }
+
+int hlp_path_page(const RrtPath *path, const PoseEstimator &pose, int page, output_data_str *out) {
+    out->NTrajectoryPoints = 0;
+    if (path == 0 || page < 0) return 0;
+    int k = 0;
+    for (int i = HLP_PREVIEW_STRIDE * page; i < path->n && k < TRAJ_MAX_POINTS; i++, k++) {
+        double xv, yv;
+        pose.world_to_vehicle(path->x[i], path->y[i], &xv, &yv);
+        out->TrajectoryPointIX[k] = xv;
+        out->TrajectoryPointIY[k] = yv;
+        out->TrajectoryPointITime[k] = 0.;
+    }
+    out->NTrajectoryPoints = k;
+    return k;
+}
