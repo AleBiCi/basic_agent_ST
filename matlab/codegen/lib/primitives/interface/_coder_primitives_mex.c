@@ -5,7 +5,7 @@
  *
  * _coder_primitives_mex.c
  *
- * Code generation for function 'a_opt'
+ * Code generation for function 'coef_list_fun'
  *
  */
 
@@ -22,79 +22,80 @@ void mexFunction(int32_T nlhs, mxArray *plhs[], int32_T nrhs,
       NULL, /* tls */
       NULL  /* prev */
   };
-  const mxArray *d_prhs[7];
-  const mxArray *f_prhs[7];
-  const mxArray *g_prhs[7];
   const mxArray *i_prhs[7];
-  const mxArray *e_prhs[6];
-  const mxArray *h_prhs[5];
-  const mxArray *b_prhs[3];
+  const mxArray *h_prhs[6];
+  const mxArray *j_prhs[5];
+  const mxArray *f_prhs[3];
+  const mxArray *b_prhs[2];
   const mxArray *c_prhs[2];
+  const mxArray *d_prhs[2];
+  const mxArray *e_prhs[2];
+  const mxArray *g_prhs[2];
   int32_T i;
   int32_T i1;
   int32_T i2;
-  int32_T i3;
-  int32_T i4;
-  int32_T i5;
-  const char_T *entryPointTemplateNames[8] = {"a_opt",
-                                              "coef_list_fun",
-                                              "s_opt",
-                                              "student_pass_primitive",
-                                              "student_pass_primitive_j0",
+  const char_T *entryPointTemplateNames[9] = {"coef_list_fun",
+                                              "coeffs_s_opt",
+                                              "coeffs_v_opt",
+                                              "coeffs_a_opt",
+                                              "coeffs_j_opt",
                                               "student_stop_primitive",
                                               "student_stop_primitive_j0",
-                                              "v_opt"};
+                                              "student_pass_primitive",
+                                              "student_pass_primitive_j0"};
   mexAtExit(&primitives_atexit);
   primitives_initialize();
   st.tls = emlrtRootTLSGlobal;
   switch (emlrtGetEntryPointIndexR2016a(
-      &st, nrhs, &prhs[0], (const char_T **)&entryPointTemplateNames[0], 8)) {
+      &st, nrhs, &prhs[0], (const char_T **)&entryPointTemplateNames[0], 9)) {
   case 0:
-    for (i = 0; i < 7; i++) {
-      d_prhs[i] = prhs[i + 1];
+    for (i = 0; i < 6; i++) {
+      h_prhs[i] = prhs[i + 1];
     }
-    unsafe_a_opt_mexFunction(nlhs, plhs, nrhs - 1, d_prhs);
+    unsafe_coef_list_fun_mexFunction(nlhs, plhs, nrhs - 1, h_prhs);
     break;
   case 1:
-    for (i1 = 0; i1 < 6; i1++) {
-      e_prhs[i1] = prhs[i1 + 1];
-    }
-    unsafe_coef_list_fun_mexFunction(nlhs, plhs, nrhs - 1, e_prhs);
-    break;
-  case 2:
-    for (i2 = 0; i2 < 7; i2++) {
-      f_prhs[i2] = prhs[i2 + 1];
-    }
-    unsafe_s_opt_mexFunction(nlhs, plhs, nrhs - 1, f_prhs);
-    break;
-  case 3:
-    for (i3 = 0; i3 < 7; i3++) {
-      g_prhs[i3] = prhs[i3 + 1];
-    }
-    unsafe_student_pass_primitive_mexFunction(nlhs, plhs, nrhs - 1, g_prhs);
-    break;
-  case 4:
-    for (i4 = 0; i4 < 5; i4++) {
-      h_prhs[i4] = prhs[i4 + 1];
-    }
-    unsafe_student_pass_primitive_j0_mexFunction(nlhs, plhs, nrhs - 1, h_prhs);
-    break;
-  case 5:
     b_prhs[0] = prhs[1];
     b_prhs[1] = prhs[2];
-    b_prhs[2] = prhs[3];
-    unsafe_student_stop_primitive_mexFunction(nlhs, plhs, nrhs - 1, b_prhs);
+    unsafe_coeffs_s_opt_mexFunction(nlhs, plhs, nrhs - 1, b_prhs);
     break;
-  case 6:
+  case 2:
     c_prhs[0] = prhs[1];
     c_prhs[1] = prhs[2];
-    unsafe_student_stop_primitive_j0_mexFunction(nlhs, plhs, nrhs - 1, c_prhs);
+    unsafe_coeffs_v_opt_mexFunction(nlhs, plhs, nrhs - 1, c_prhs);
+    break;
+  case 3:
+    d_prhs[0] = prhs[1];
+    d_prhs[1] = prhs[2];
+    unsafe_coeffs_a_opt_mexFunction(nlhs, plhs, nrhs - 1, d_prhs);
+    break;
+  case 4:
+    e_prhs[0] = prhs[1];
+    e_prhs[1] = prhs[2];
+    unsafe_coeffs_j_opt_mexFunction(nlhs, plhs, nrhs - 1, e_prhs);
+    break;
+  case 5:
+    f_prhs[0] = prhs[1];
+    f_prhs[1] = prhs[2];
+    f_prhs[2] = prhs[3];
+    unsafe_student_stop_primitive_mexFunction(nlhs, plhs, nrhs - 1, f_prhs);
+    break;
+  case 6:
+    g_prhs[0] = prhs[1];
+    g_prhs[1] = prhs[2];
+    unsafe_student_stop_primitive_j0_mexFunction(nlhs, plhs, nrhs - 1, g_prhs);
     break;
   case 7:
-    for (i5 = 0; i5 < 7; i5++) {
-      i_prhs[i5] = prhs[i5 + 1];
+    for (i1 = 0; i1 < 7; i1++) {
+      i_prhs[i1] = prhs[i1 + 1];
     }
-    unsafe_v_opt_mexFunction(nlhs, plhs, nrhs - 1, i_prhs);
+    unsafe_student_pass_primitive_mexFunction(nlhs, plhs, nrhs - 1, i_prhs);
+    break;
+  case 8:
+    for (i2 = 0; i2 < 5; i2++) {
+      j_prhs[i2] = prhs[i2 + 1];
+    }
+    unsafe_student_pass_primitive_j0_mexFunction(nlhs, plhs, nrhs - 1, j_prhs);
     break;
   }
   primitives_terminate();
@@ -105,36 +106,6 @@ emlrtCTX mexFunctionCreateRootTLS(void)
   emlrtCreateRootTLSR2022a(&emlrtRootTLSGlobal, &emlrtContextGlobal, NULL, 1,
                            NULL, "windows-1252", true);
   return emlrtRootTLSGlobal;
-}
-
-void unsafe_a_opt_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
-                              const mxArray *prhs[7])
-{
-  emlrtStack st = {
-      NULL, /* site */
-      NULL, /* tls */
-      NULL  /* prev */
-  };
-  const mxArray *b_prhs[7];
-  const mxArray *outputs;
-  int32_T i;
-  st.tls = emlrtRootTLSGlobal;
-  /* Check for proper number of arguments. */
-  if (nrhs != 7) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 7, 4,
-                        5, "a_opt");
-  }
-  if (nlhs > 1) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, 4, 5,
-                        "a_opt");
-  }
-  /* Call the function. */
-  for (i = 0; i < 7; i++) {
-    b_prhs[i] = prhs[i];
-  }
-  a_opt_api(b_prhs, &outputs);
-  /* Copy over outputs to the caller. */
-  emlrtReturnArrays(1, &plhs[0], &outputs);
 }
 
 void unsafe_coef_list_fun_mexFunction(int32_T nlhs, mxArray *plhs[1],
@@ -167,32 +138,114 @@ void unsafe_coef_list_fun_mexFunction(int32_T nlhs, mxArray *plhs[1],
   emlrtReturnArrays(1, &plhs[0], &outputs);
 }
 
-void unsafe_s_opt_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
-                              const mxArray *prhs[7])
+void unsafe_coeffs_a_opt_mexFunction(int32_T nlhs, mxArray *plhs[1],
+                                     int32_T nrhs, const mxArray *prhs[2])
 {
   emlrtStack st = {
       NULL, /* site */
       NULL, /* tls */
       NULL  /* prev */
   };
-  const mxArray *b_prhs[7];
+  const mxArray *b_prhs[2];
   const mxArray *outputs;
-  int32_T i;
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 7) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 7, 4,
-                        5, "s_opt");
+  if (nrhs != 2) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 2, 4,
+                        12, "coeffs_a_opt");
   }
   if (nlhs > 1) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, 4, 5,
-                        "s_opt");
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, 4, 12,
+                        "coeffs_a_opt");
   }
   /* Call the function. */
-  for (i = 0; i < 7; i++) {
-    b_prhs[i] = prhs[i];
+  b_prhs[0] = prhs[0];
+  b_prhs[1] = prhs[1];
+  coeffs_a_opt_api(b_prhs, &outputs);
+  /* Copy over outputs to the caller. */
+  emlrtReturnArrays(1, &plhs[0], &outputs);
+}
+
+void unsafe_coeffs_j_opt_mexFunction(int32_T nlhs, mxArray *plhs[1],
+                                     int32_T nrhs, const mxArray *prhs[2])
+{
+  emlrtStack st = {
+      NULL, /* site */
+      NULL, /* tls */
+      NULL  /* prev */
+  };
+  const mxArray *b_prhs[2];
+  const mxArray *outputs;
+  st.tls = emlrtRootTLSGlobal;
+  /* Check for proper number of arguments. */
+  if (nrhs != 2) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 2, 4,
+                        12, "coeffs_j_opt");
   }
-  s_opt_api(b_prhs, &outputs);
+  if (nlhs > 1) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, 4, 12,
+                        "coeffs_j_opt");
+  }
+  /* Call the function. */
+  b_prhs[0] = prhs[0];
+  b_prhs[1] = prhs[1];
+  coeffs_j_opt_api(b_prhs, &outputs);
+  /* Copy over outputs to the caller. */
+  emlrtReturnArrays(1, &plhs[0], &outputs);
+}
+
+void unsafe_coeffs_s_opt_mexFunction(int32_T nlhs, mxArray *plhs[1],
+                                     int32_T nrhs, const mxArray *prhs[2])
+{
+  emlrtStack st = {
+      NULL, /* site */
+      NULL, /* tls */
+      NULL  /* prev */
+  };
+  const mxArray *b_prhs[2];
+  const mxArray *outputs;
+  st.tls = emlrtRootTLSGlobal;
+  /* Check for proper number of arguments. */
+  if (nrhs != 2) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 2, 4,
+                        12, "coeffs_s_opt");
+  }
+  if (nlhs > 1) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, 4, 12,
+                        "coeffs_s_opt");
+  }
+  /* Call the function. */
+  b_prhs[0] = prhs[0];
+  b_prhs[1] = prhs[1];
+  coeffs_s_opt_api(b_prhs, &outputs);
+  /* Copy over outputs to the caller. */
+  emlrtReturnArrays(1, &plhs[0], &outputs);
+}
+
+void unsafe_coeffs_v_opt_mexFunction(int32_T nlhs, mxArray *plhs[1],
+                                     int32_T nrhs, const mxArray *prhs[2])
+{
+  emlrtStack st = {
+      NULL, /* site */
+      NULL, /* tls */
+      NULL  /* prev */
+  };
+  const mxArray *b_prhs[2];
+  const mxArray *outputs;
+  st.tls = emlrtRootTLSGlobal;
+  /* Check for proper number of arguments. */
+  if (nrhs != 2) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 2, 4,
+                        12, "coeffs_v_opt");
+  }
+  if (nlhs > 1) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, 4, 12,
+                        "coeffs_v_opt");
+  }
+  /* Call the function. */
+  b_prhs[0] = prhs[0];
+  b_prhs[1] = prhs[1];
+  coeffs_v_opt_api(b_prhs, &outputs);
   /* Copy over outputs to the caller. */
   emlrtReturnArrays(1, &plhs[0], &outputs);
 }
@@ -342,36 +395,6 @@ void unsafe_student_stop_primitive_mexFunction(int32_T nlhs, mxArray *plhs[3],
     i = nlhs;
   }
   emlrtReturnArrays(i, &plhs[0], &outputs[0]);
-}
-
-void unsafe_v_opt_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
-                              const mxArray *prhs[7])
-{
-  emlrtStack st = {
-      NULL, /* site */
-      NULL, /* tls */
-      NULL  /* prev */
-  };
-  const mxArray *b_prhs[7];
-  const mxArray *outputs;
-  int32_T i;
-  st.tls = emlrtRootTLSGlobal;
-  /* Check for proper number of arguments. */
-  if (nrhs != 7) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 7, 4,
-                        5, "v_opt");
-  }
-  if (nlhs > 1) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, 4, 5,
-                        "v_opt");
-  }
-  /* Call the function. */
-  for (i = 0; i < 7; i++) {
-    b_prhs[i] = prhs[i];
-  }
-  v_opt_api(b_prhs, &outputs);
-  /* Copy over outputs to the caller. */
-  emlrtReturnArrays(1, &plhs[0], &outputs);
 }
 
 /* End of code generation (_coder_primitives_mex.c) */

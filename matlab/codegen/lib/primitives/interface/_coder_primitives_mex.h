@@ -5,7 +5,7 @@
  *
  * _coder_primitives_mex.h
  *
- * Code generation for function 'a_opt'
+ * Code generation for function 'coef_list_fun'
  *
  */
 
@@ -27,14 +27,20 @@ MEXFUNCTION_LINKAGE void mexFunction(int32_T nlhs, mxArray *plhs[],
 
 emlrtCTX mexFunctionCreateRootTLS(void);
 
-void unsafe_a_opt_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
-                              const mxArray *prhs[7]);
-
 void unsafe_coef_list_fun_mexFunction(int32_T nlhs, mxArray *plhs[1],
                                       int32_T nrhs, const mxArray *prhs[6]);
 
-void unsafe_s_opt_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
-                              const mxArray *prhs[7]);
+void unsafe_coeffs_a_opt_mexFunction(int32_T nlhs, mxArray *plhs[1],
+                                     int32_T nrhs, const mxArray *prhs[2]);
+
+void unsafe_coeffs_j_opt_mexFunction(int32_T nlhs, mxArray *plhs[1],
+                                     int32_T nrhs, const mxArray *prhs[2]);
+
+void unsafe_coeffs_s_opt_mexFunction(int32_T nlhs, mxArray *plhs[1],
+                                     int32_T nrhs, const mxArray *prhs[2]);
+
+void unsafe_coeffs_v_opt_mexFunction(int32_T nlhs, mxArray *plhs[1],
+                                     int32_T nrhs, const mxArray *prhs[2]);
 
 void unsafe_student_pass_primitive_j0_mexFunction(int32_T nlhs,
                                                   mxArray *plhs[3],
@@ -53,9 +59,6 @@ void unsafe_student_stop_primitive_j0_mexFunction(int32_T nlhs,
 void unsafe_student_stop_primitive_mexFunction(int32_T nlhs, mxArray *plhs[3],
                                                int32_T nrhs,
                                                const mxArray *prhs[3]);
-
-void unsafe_v_opt_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
-                              const mxArray *prhs[7]);
 
 #ifdef __cplusplus
 }

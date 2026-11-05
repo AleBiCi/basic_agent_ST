@@ -5,7 +5,7 @@
  *
  * rtGetNaN.c
  *
- * Code generation for function 'a_opt'
+ * Code generation for function 'coef_list_fun'
  *
  */
 

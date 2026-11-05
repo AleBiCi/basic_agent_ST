@@ -93,7 +93,8 @@ c = sym('c',[1 6]);  % called 'm' in the slides
 % c1,...,c5
 % Note: c0 = 0
 
-coeffs_s_opt = c(1)*t + 1/2*c(2)*t^2 + 1/6*c(3)*t^3 + 1/24*c(4)*t^4 + 1/120*c(5)*t^5 + c(6)*t^5;
+% coef_list_fun returns [c0=0, c1=v0, c2=a0, c3=j0, c4, c5] -> c(k+1) is c_k (slide 35)
+coeffs_s_opt = c(1) + c(2)*t + 1/2*c(3)*t^2 + 1/6*c(4)*t^3 + 1/24*c(5)*t^4 + 1/120*c(6)*t^5;
 % Get further equations by differentiating s
 coeffs_v_opt = diff(coeffs_s_opt, t);
 coeffs_a_opt = diff(coeffs_v_opt, t);
@@ -138,8 +139,8 @@ j_list = j_opt_fun(t_list, v0val, a0val, xfval, vfval, afval, Tmax);
 coeffs = coef_list_fun(v0val, a0val, xfval, vfval, afval, Tmax);
 coeffs_s_list = coeffs_s_opt_fun(t_list, coeffs);
 coeffs_v_list = coeffs_v_opt_fun(t_list, coeffs);
-coeffs_a_list = coeffs_v_opt_fun(t_list, coeffs);
-coeffs_j_list = coeffs_a_opt_fun(t_list, coeffs);
+coeffs_a_list = coeffs_a_opt_fun(t_list, coeffs);
+coeffs_j_list = coeffs_j_opt_fun(t_list, coeffs);
 
 % figure(1)
 % %% Position

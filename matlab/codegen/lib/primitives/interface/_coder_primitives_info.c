@@ -5,7 +5,7 @@
  *
  * _coder_primitives_info.c
  *
- * Code generation for function 'a_opt'
+ * Code generation for function 'coef_list_fun'
  *
  */
 
@@ -22,44 +22,44 @@ static const mxArray *c_emlrtMexFcnResolvedFunctionsI(void)
 {
   const mxArray *nameCaptureInfo;
   const char_T *data[10] = {
-      "789ced9b4d73d3461880d70c1f3db4e02903ffa1171a27b1a9b929fe50446419fc417010"
-      "08d95ed94a56966c492e61a6bfa13fa3a75e3a3d73603a1d66b8c081"
-      "81e9f4e003c30fe8ad9d1e90e4288e84776c46b21289ddcb66f56af7fd58f9f1eb771590"
-      "622a2900c065306d3fb0d3fe9ba371faa83f07bccd2f4ff9aea7bcb7",
-      "830be0fc5cf9cf477d471d18f089311d0c44051ecfecaa8a3c100746e35083600475158d"
-      "61d7914832820d5981f59303ce1e29e513a2e3812db2ff2ef461e7a0"
-      "6e2a60d4d76716a29383e378bcc3f87b7ec9788c31f148fbe40f4a0f0bb7f8a60e473a4f"
-      "21a8ebe2a03b52f922d40f0c55e39b1cd3e0f80a4533f5468d624b7c",
-      "bd54a872c5aa40715c9567ee5145be063555e7dba22e7704b1070786506ff08a6820b1cd"
-      "eb86d9b5af68a2ae0bda485664431ec31bcacccf2701fdbcbac04f57"
-      "2e597b8904553304c3da11c720e7ba6bc7e380765cc4da31957455b38d6078fbabfbc6c0"
-      "779f2b5fedfece89aabdb960715caf2ce9a7bf9fddff95d37f50fe4e",
-      "45a9ef8df2f2f728f5b9edb4f405fd7c5ec7e84bfbe43777e94cbf9e330f1969adbc878a"
-      "798a4385ed991d7716e8596407c08ca35aff4be1b916d0cfaf17f8e9"
-      "ca1dde585fd0c218227b7c5a1c7f15501fc2eaf3ca57bbaf27a339057852f9fd9df49af0"
-      "1b84cfef5a3197dde8655b92cc2095d172951a2b154a84df71e3f7e3",
-      "807e5ec2fa3995b8c83e2d5ebf08a8af87d5e795af761f67a84e2aa79fadbd259c06e173"
-      "7ac79073a859dadaccf5a43c5da7b26663ab4df2ecd8713ae8f3f2ed"
-      "023f5df9ec17bec59b59d924b6759311569f571e55ddc48dea51d924b13c4fd1cf09cf41"
-      "f83cd7e8b6f274f3705081ddad3da6b6759b2b73770b84e771e379d0",
-      "ba09eefc23ed937754280948d60d41320720be751305abcf2b5fedbe7aa2e9203ca9fcce"
-      "bcfffeb728f5b92de9fc2e8bf0805daf0c0d98cdb05256cd8bda53b6"
-      "9c1c7e4f30f3978de32166fdb44f7e1afc16f6d7dcb42df2e766cec99b654e7cf3f2b3f1"
-      "3d3d3faacbd4c7e2caf56717feff334a7d6e4b3ad7b73798dcbec8e6",
-      "e51fb3cdaad832bb2cd2e804e5e513cc7cc2f5f9fe5e5be0af2bffb432e0603db65c37b1"
-      "fabcf2a8eb2dee1e2795ebbffcfb0fe13a089febbb3b3976871e9932"
-      "b5aeb4606b5cca64d87282eae713ccfca4729dd45d3e4f1fa9bb90bacb2af591ba4b38eb"
-      "27e3f7b8cb71dd5aeb4cbd3f6e1be45c8f6b5e7e26df1fb7a31af1fb",
-      "e3ef23e6f923314bf272b0029e8ffb43b596dbc87746d47e71af092b1d8d49505efea5f0"
-      "9ce4e39fa78fe4e3241f5fa53e928f87b3fe04333f9e75152fbfcfd0"
-      "39a8631839075d415e1ef139e85f1173fd8fd67fbf46a9cf6d71e5fab2e7599b55eb511c"
-      "56ef518d9ea4c10cab37d6e93d40b81e57ae07cdcf71f14dfbfa1981",
-      "2cab2d43e29a9f6bbe31f0dde7caa3e2f9349a3794a472fca775c271bb85fe7f43c32eea"
-      "f7abbbed22baad6cdfbf39bc5fced209aaaf4c30f309c7e7fb4bea2c"
-      "defb489d255c7da4ce326da4ceb2dcfa1f01e9e11332",
+      "789ced9add72da4614c7d76dfa71d10fa699767a9167c8246e3038770a888f0884413802"
+      "a28e2260c1027d21090cb49d66dadef7017ad717685e218fd0bbde74"
+      "c6579d642657ed0b54489641aa77c0111696ba7bb35efdb57bce9e957e5ece0aec15cb7b"
+      "00804f8053be2c3bf5c7e7edc479fd0ef016bfbee7bbbee7bd1dbc07",
+      "6e5daaff7c5e7754c58453d36928820c2f7a7655595404c5accf34087468a8d204766da5"
+      "274ab02eca90596dd08b969c5b912e1a0b69f177e6047686cc5806fa"
+      "89b1f4505a6d5cc4e30c31df5b1bc6e339221e099ffe94fc3af3903b36a06e7084040d43"
+      "50babaca65a13134558d3ba68b759a2b13f92253af11259263c84c85",
+      "ce567882a62bdc912eca2acf40992b3e21b25c0d6aaac1b50543ecf0421f2a26cfd43959"
+      "3025a1cd19e6b8bbb86258a3f29ad54f34c509bc2bbbf39d069cefed"
+      "35f375f59eb5a612af6a266f5a2b63bb635f77fd7816d08ff7917e384a571db725b8bd75"
+      "fe0e69cfab87b5ce97c4f7ae0cd6c7f7d30de7ebaf97f77fe8d4f29f",
+      "b61496bdbff60bbf8769cf2dbbb217f43dfd02612fe1d31f173bc7a74c523f22d583d683"
+      "5ebb3e48a5d8ecd28fa33576d6f90110edb0c63f43f48f2bdfb580f3"
+      "45fd7f4ff8f48e0a7bbc241a26df1b2b60775cff23a0bd53a43daf1ed6fa7ae26a113dae"
+      "3c7ffd4f12f31c6c9fe7a559919a1798a9208a05e9b095cbd70ab354",
+      "3e3e3c7f85e8bf691c7f448c9ff0e9bbe5393fb867efe6c27f7e2ed9575ace4477dffe1c"
+      "69cfabef70df6e2f765c39ff779fc59c07db7f4fe9f4fd99381ba606"
+      "add2e323cd54eff7dbba51c09c8f3ae783eedf51714ef8ea25872c9f2d37a2caf739d29e"
+      "570f9fef4e5ccf9737b6fbf85fdf5430dfc1f6f9aeb22a4b120d4627",
+      "5bad119b6db2b983513983f9fe7fe73bcecf78efc3f999ebb187f3334ec1f999ab8d7f86"
+      "e81fd5dfeb2ed735c1306ed079eac21dfb7a54f7ed37fc3c7511df58"
+      "9fa796eff431dfc1f6f9fe95d09006eda644d42ae94c4e6852ad475506f33db27c0fba5f"
+      "ff68cd7c5ddda68e2c2afc044a8b7654f7eb13a43daf1ed6faaec675",
+      "01f4b8f2fc87df24cc73b07d9e8fcb658d18d3d464aa2655b694aacd93b54731cac39c21"
+      "fac795e7cf02cef703e47c1dc5457854f93d42daf3ea61ade70abaed"
+      "12577ebf204dcc6f700ddf33e44b5435d3d0ea6cb5caa429ea98d89f1ee630bfa3caefa0"
+      "cfcd676be6ebeacb7c80459f65ba25b2f9966f91f6bc7af8f91637be",
+      "0ee2e3caf7a7bff098ef60f3e7f57384bd844fcf768bb374aa911fe9aabccfce0f92fd71"
+      "960698ef51e57bd07c0b3e1ff5de87cf47afc71e3e1f750a3e1fbdda"
+      "f871fdeec5cbf31bf3fdbaed16fe7efd5acf4963fdfd7aeedd9f30e7c1f6dfd339dd1bc9"
+      "b34a63383e11e7994a931d28d5748cf2ea98f36f37ef4d7ff7fd377f",
+      "60633eb29cff1e69cfabef2e3fe3ac755c39fff2ce3798f360fb9c3f9d3f38ac0c4f86a3"
+      "5993ea50cd7b64b7d8a348ccf9a8731ee769ae660fe769709e260c7b"
+      "384f136cfc7f017dc67535",
       ""};
   nameCaptureInfo = NULL;
-  emlrtNameCaptureMxArrayR2016a(&data[0], 19536U, &nameCaptureInfo);
+  emlrtNameCaptureMxArrayR2016a(&data[0], 19760U, &nameCaptureInfo);
   return nameCaptureInfo;
 }
 
@@ -81,11 +81,12 @@ mxArray *emlrtMexFcnProperties(void)
       "QualifiedName",    "NumberOfInputs", "NumberOfOutputs", "ConstantInputs",
       "ResolvedFilePath", "TimeStamp",      "Constructor",     "Visible"};
   xEntryPoints =
-      emlrtCreateStructMatrix(1, 8, 8, (const char_T **)&epFieldName[0]);
-  xInputs = emlrtCreateLogicalMatrix(1, 7);
-  emlrtSetField(xEntryPoints, 0, "QualifiedName", emlrtMxCreateString("a_opt"));
+      emlrtCreateStructMatrix(1, 9, 8, (const char_T **)&epFieldName[0]);
+  xInputs = emlrtCreateLogicalMatrix(1, 6);
+  emlrtSetField(xEntryPoints, 0, "QualifiedName",
+                emlrtMxCreateString("coef_list_fun"));
   emlrtSetField(xEntryPoints, 0, "NumberOfInputs",
-                emlrtMxCreateDoubleScalar(7.0));
+                emlrtMxCreateDoubleScalar(6.0));
   emlrtSetField(xEntryPoints, 0, "NumberOfOutputs",
                 emlrtMxCreateDoubleScalar(1.0));
   emlrtSetField(xEntryPoints, 0, "ConstantInputs", xInputs);
@@ -93,17 +94,18 @@ mxArray *emlrtMexFcnProperties(void)
       xEntryPoints, 0, "ResolvedFilePath",
       emlrtMxCreateString(
           "C:\\Users\\Alessandro\\Desktop\\UNITN\\MAGISTRALE\\SECONDO_"
-          "ANNO\\IVAD\\Repos\\basic_agent_ST\\matlab\\a_opt.m"));
+          "ANNO\\Primo_Sem\\IVAD\\Repos\\basic_agent_ST\\matlab\\coef_list_fun."
+          "m"));
   emlrtSetField(xEntryPoints, 0, "TimeStamp",
-                emlrtMxCreateDoubleScalar(739966.76216435188));
+                emlrtMxCreateDoubleScalar(740291.46527777775));
   emlrtSetField(xEntryPoints, 0, "Constructor",
                 emlrtMxCreateLogicalScalar(false));
   emlrtSetField(xEntryPoints, 0, "Visible", emlrtMxCreateLogicalScalar(true));
-  xInputs = emlrtCreateLogicalMatrix(1, 6);
+  xInputs = emlrtCreateLogicalMatrix(1, 2);
   emlrtSetField(xEntryPoints, 1, "QualifiedName",
-                emlrtMxCreateString("coef_list_fun"));
+                emlrtMxCreateString("coeffs_s_opt"));
   emlrtSetField(xEntryPoints, 1, "NumberOfInputs",
-                emlrtMxCreateDoubleScalar(6.0));
+                emlrtMxCreateDoubleScalar(2.0));
   emlrtSetField(xEntryPoints, 1, "NumberOfOutputs",
                 emlrtMxCreateDoubleScalar(1.0));
   emlrtSetField(xEntryPoints, 1, "ConstantInputs", xInputs);
@@ -111,16 +113,18 @@ mxArray *emlrtMexFcnProperties(void)
       xEntryPoints, 1, "ResolvedFilePath",
       emlrtMxCreateString(
           "C:\\Users\\Alessandro\\Desktop\\UNITN\\MAGISTRALE\\SECONDO_"
-          "ANNO\\IVAD\\Repos\\basic_agent_ST\\matlab\\coef_list_fun.m"));
+          "ANNO\\Primo_Sem\\IVAD\\Repos\\basic_agent_ST\\matlab\\coeffs_s_opt."
+          "m"));
   emlrtSetField(xEntryPoints, 1, "TimeStamp",
-                emlrtMxCreateDoubleScalar(739966.76216435188));
+                emlrtMxCreateDoubleScalar(740291.46527777775));
   emlrtSetField(xEntryPoints, 1, "Constructor",
                 emlrtMxCreateLogicalScalar(false));
   emlrtSetField(xEntryPoints, 1, "Visible", emlrtMxCreateLogicalScalar(true));
-  xInputs = emlrtCreateLogicalMatrix(1, 7);
-  emlrtSetField(xEntryPoints, 2, "QualifiedName", emlrtMxCreateString("s_opt"));
+  xInputs = emlrtCreateLogicalMatrix(1, 2);
+  emlrtSetField(xEntryPoints, 2, "QualifiedName",
+                emlrtMxCreateString("coeffs_v_opt"));
   emlrtSetField(xEntryPoints, 2, "NumberOfInputs",
-                emlrtMxCreateDoubleScalar(7.0));
+                emlrtMxCreateDoubleScalar(2.0));
   emlrtSetField(xEntryPoints, 2, "NumberOfOutputs",
                 emlrtMxCreateDoubleScalar(1.0));
   emlrtSetField(xEntryPoints, 2, "ConstantInputs", xInputs);
@@ -128,48 +132,48 @@ mxArray *emlrtMexFcnProperties(void)
       xEntryPoints, 2, "ResolvedFilePath",
       emlrtMxCreateString(
           "C:\\Users\\Alessandro\\Desktop\\UNITN\\MAGISTRALE\\SECONDO_"
-          "ANNO\\IVAD\\Repos\\basic_agent_ST\\matlab\\s_opt.m"));
+          "ANNO\\Primo_Sem\\IVAD\\Repos\\basic_agent_ST\\matlab\\coeffs_v_opt."
+          "m"));
   emlrtSetField(xEntryPoints, 2, "TimeStamp",
-                emlrtMxCreateDoubleScalar(739966.76215277775));
+                emlrtMxCreateDoubleScalar(740291.46527777775));
   emlrtSetField(xEntryPoints, 2, "Constructor",
                 emlrtMxCreateLogicalScalar(false));
   emlrtSetField(xEntryPoints, 2, "Visible", emlrtMxCreateLogicalScalar(true));
-  xInputs = emlrtCreateLogicalMatrix(1, 7);
+  xInputs = emlrtCreateLogicalMatrix(1, 2);
   emlrtSetField(xEntryPoints, 3, "QualifiedName",
-                emlrtMxCreateString("student_pass_primitive"));
+                emlrtMxCreateString("coeffs_a_opt"));
   emlrtSetField(xEntryPoints, 3, "NumberOfInputs",
-                emlrtMxCreateDoubleScalar(7.0));
+                emlrtMxCreateDoubleScalar(2.0));
   emlrtSetField(xEntryPoints, 3, "NumberOfOutputs",
-                emlrtMxCreateDoubleScalar(6.0));
+                emlrtMxCreateDoubleScalar(1.0));
   emlrtSetField(xEntryPoints, 3, "ConstantInputs", xInputs);
   emlrtSetField(
       xEntryPoints, 3, "ResolvedFilePath",
       emlrtMxCreateString(
           "C:\\Users\\Alessandro\\Desktop\\UNITN\\MAGISTRALE\\SECONDO_"
-          "ANNO\\IVAD\\Repos\\basic_agent_ST\\matlab\\student_pass_primitive."
+          "ANNO\\Primo_Sem\\IVAD\\Repos\\basic_agent_ST\\matlab\\coeffs_a_opt."
           "m"));
   emlrtSetField(xEntryPoints, 3, "TimeStamp",
-                emlrtMxCreateDoubleScalar(739934.75704861106));
+                emlrtMxCreateDoubleScalar(740291.46527777775));
   emlrtSetField(xEntryPoints, 3, "Constructor",
                 emlrtMxCreateLogicalScalar(false));
   emlrtSetField(xEntryPoints, 3, "Visible", emlrtMxCreateLogicalScalar(true));
-  xInputs = emlrtCreateLogicalMatrix(1, 5);
+  xInputs = emlrtCreateLogicalMatrix(1, 2);
   emlrtSetField(xEntryPoints, 4, "QualifiedName",
-                emlrtMxCreateString("student_pass_primitive_j0"));
+                emlrtMxCreateString("coeffs_j_opt"));
   emlrtSetField(xEntryPoints, 4, "NumberOfInputs",
-                emlrtMxCreateDoubleScalar(5.0));
+                emlrtMxCreateDoubleScalar(2.0));
   emlrtSetField(xEntryPoints, 4, "NumberOfOutputs",
-                emlrtMxCreateDoubleScalar(3.0));
+                emlrtMxCreateDoubleScalar(1.0));
   emlrtSetField(xEntryPoints, 4, "ConstantInputs", xInputs);
   emlrtSetField(
       xEntryPoints, 4, "ResolvedFilePath",
       emlrtMxCreateString(
           "C:\\Users\\Alessandro\\Desktop\\UNITN\\MAGISTRALE\\SECONDO_"
-          "ANNO\\IVAD\\Repos\\basic_agent_ST\\matlab\\student_pass_primitive_"
-          "j0."
+          "ANNO\\Primo_Sem\\IVAD\\Repos\\basic_agent_ST\\matlab\\coeffs_j_opt."
           "m"));
   emlrtSetField(xEntryPoints, 4, "TimeStamp",
-                emlrtMxCreateDoubleScalar(739966.76650462963));
+                emlrtMxCreateDoubleScalar(740291.46527777775));
   emlrtSetField(xEntryPoints, 4, "Constructor",
                 emlrtMxCreateLogicalScalar(false));
   emlrtSetField(xEntryPoints, 4, "Visible", emlrtMxCreateLogicalScalar(true));
@@ -185,10 +189,11 @@ mxArray *emlrtMexFcnProperties(void)
       xEntryPoints, 5, "ResolvedFilePath",
       emlrtMxCreateString(
           "C:\\Users\\Alessandro\\Desktop\\UNITN\\MAGISTRALE\\SECONDO_"
-          "ANNO\\IVAD\\Repos\\basic_agent_ST\\matlab\\student_stop_primitive."
-          "m"));
+          "ANNO\\Primo_Sem\\IVAD\\Repos\\basic_agent_ST\\matlab\\student_stop_"
+          "pr"
+          "imitive.m"));
   emlrtSetField(xEntryPoints, 5, "TimeStamp",
-                emlrtMxCreateDoubleScalar(739966.732650463));
+                emlrtMxCreateDoubleScalar(740290.78478009254));
   emlrtSetField(xEntryPoints, 5, "Constructor",
                 emlrtMxCreateLogicalScalar(false));
   emlrtSetField(xEntryPoints, 5, "Visible", emlrtMxCreateLogicalScalar(true));
@@ -204,31 +209,54 @@ mxArray *emlrtMexFcnProperties(void)
       xEntryPoints, 6, "ResolvedFilePath",
       emlrtMxCreateString(
           "C:\\Users\\Alessandro\\Desktop\\UNITN\\MAGISTRALE\\SECONDO_"
-          "ANNO\\IVAD\\Repos\\basic_agent_ST\\matlab\\student_stop_primitive_"
-          "j0."
-          "m"));
+          "ANNO\\Primo_Sem\\IVAD\\Repos\\basic_agent_ST\\matlab\\student_stop_"
+          "pr"
+          "imitive_j0.m"));
   emlrtSetField(xEntryPoints, 6, "TimeStamp",
                 emlrtMxCreateDoubleScalar(739966.76707175921));
   emlrtSetField(xEntryPoints, 6, "Constructor",
                 emlrtMxCreateLogicalScalar(false));
   emlrtSetField(xEntryPoints, 6, "Visible", emlrtMxCreateLogicalScalar(true));
   xInputs = emlrtCreateLogicalMatrix(1, 7);
-  emlrtSetField(xEntryPoints, 7, "QualifiedName", emlrtMxCreateString("v_opt"));
+  emlrtSetField(xEntryPoints, 7, "QualifiedName",
+                emlrtMxCreateString("student_pass_primitive"));
   emlrtSetField(xEntryPoints, 7, "NumberOfInputs",
                 emlrtMxCreateDoubleScalar(7.0));
   emlrtSetField(xEntryPoints, 7, "NumberOfOutputs",
-                emlrtMxCreateDoubleScalar(1.0));
+                emlrtMxCreateDoubleScalar(6.0));
   emlrtSetField(xEntryPoints, 7, "ConstantInputs", xInputs);
   emlrtSetField(
       xEntryPoints, 7, "ResolvedFilePath",
       emlrtMxCreateString(
           "C:\\Users\\Alessandro\\Desktop\\UNITN\\MAGISTRALE\\SECONDO_"
-          "ANNO\\IVAD\\Repos\\basic_agent_ST\\matlab\\v_opt.m"));
+          "ANNO\\Primo_Sem\\IVAD\\Repos\\basic_agent_ST\\matlab\\student_pass_"
+          "pr"
+          "imitive.m"));
   emlrtSetField(xEntryPoints, 7, "TimeStamp",
-                emlrtMxCreateDoubleScalar(739966.76216435188));
+                emlrtMxCreateDoubleScalar(740290.7849884259));
   emlrtSetField(xEntryPoints, 7, "Constructor",
                 emlrtMxCreateLogicalScalar(false));
   emlrtSetField(xEntryPoints, 7, "Visible", emlrtMxCreateLogicalScalar(true));
+  xInputs = emlrtCreateLogicalMatrix(1, 5);
+  emlrtSetField(xEntryPoints, 8, "QualifiedName",
+                emlrtMxCreateString("student_pass_primitive_j0"));
+  emlrtSetField(xEntryPoints, 8, "NumberOfInputs",
+                emlrtMxCreateDoubleScalar(5.0));
+  emlrtSetField(xEntryPoints, 8, "NumberOfOutputs",
+                emlrtMxCreateDoubleScalar(3.0));
+  emlrtSetField(xEntryPoints, 8, "ConstantInputs", xInputs);
+  emlrtSetField(
+      xEntryPoints, 8, "ResolvedFilePath",
+      emlrtMxCreateString(
+          "C:\\Users\\Alessandro\\Desktop\\UNITN\\MAGISTRALE\\SECONDO_"
+          "ANNO\\Primo_Sem\\IVAD\\Repos\\basic_agent_ST\\matlab\\student_pass_"
+          "pr"
+          "imitive_j0.m"));
+  emlrtSetField(xEntryPoints, 8, "TimeStamp",
+                emlrtMxCreateDoubleScalar(740290.7849884259));
+  emlrtSetField(xEntryPoints, 8, "Constructor",
+                emlrtMxCreateLogicalScalar(false));
+  emlrtSetField(xEntryPoints, 8, "Visible", emlrtMxCreateLogicalScalar(true));
   xResult =
       emlrtCreateStructMatrix(1, 1, 9, (const char_T **)&propFieldName[0]);
   emlrtSetField(xResult, 0, "Version",
@@ -236,7 +264,7 @@ mxArray *emlrtMexFcnProperties(void)
   emlrtSetField(xResult, 0, "ResolvedFunctions",
                 (mxArray *)c_emlrtMexFcnResolvedFunctionsI());
   emlrtSetField(xResult, 0, "Checksum",
-                emlrtMxCreateString("L4UIQb0D0FTZqJRYckSnCC"));
+                emlrtMxCreateString("nld6RTtCjr480tBsr8L64B"));
   emlrtSetField(xResult, 0, "EntryPoints", xEntryPoints);
   return xResult;
 }

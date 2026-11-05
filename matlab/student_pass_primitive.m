@@ -14,7 +14,8 @@ function [coeffsT2, v2, T2, coeffsT1, v1, T1] = student_pass_primitive(v0, a0, s
     else
         T_star = time_min_vel(a0, sf);
         v_star = min_vel(v0, a0, sf);
-        if v_star < vfmin && vfmin < vfmax
+        % <= so that FreeFlow (vfmin == vfmax == vr, slide 104 line 3) still has a solution when a0 < 0
+        if v_star < vfmin && vfmin <= vfmax
             Tvmin = final_opt_time_pass(v0, a0, sf, vfmin);
             Tvmax = final_opt_time_pass(v0, a0, sf, vfmax);
         elseif vfmin < v_star && v_star < vfmax
@@ -28,8 +29,8 @@ function [coeffsT2, v2, T2, coeffsT1, v1, T1] = student_pass_primitive(v0, a0, s
 
     % FREE-FLOW PRIMITIVE
     if Tmin == 0. && Tmax == 0.
-        T1 = Tvmin;
-        T2 = Tvmax;
+        T1 = Tvmax;     % fastest (reaches vfmax), slide 59 line 18 ordering
+        T2 = Tvmin;
     % FREE-FLOW PRIMITIVE
     else
         T1 = max(Tmin, Tvmax);
@@ -42,8 +43,8 @@ function [coeffsT2, v2, T2, coeffsT1, v1, T1] = student_pass_primitive(v0, a0, s
         coeffsT1 = coef_list_fun(v0, a0, sf, v1, 0., T1);
         coeffsT2 = coef_list_fun(v0, a0, sf, v2, 0., T2);
     else
-        coeffsT1 = [0.;0.;0.;0.;0.;0.];
-        coeffsT2 = [0.;0.;0.;0.;0.;0.];
+        coeffsT1 = zeros(1,6);  % row, same size as coef_list_fun -> fixed-size double[6] in C
+        coeffsT2 = zeros(1,6);
         T1 = 0.;
         T2 = 0.;
         v1 = 0.;

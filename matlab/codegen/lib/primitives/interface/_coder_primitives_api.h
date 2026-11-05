@@ -5,7 +5,7 @@
  *
  * _coder_primitives_api.h
  *
- * Code generation for function 'a_opt'
+ * Code generation for function 'coef_list_fun'
  *
  */
 
@@ -27,15 +27,26 @@ extern "C" {
 #endif
 
 /* Function Declarations */
-real_T a_opt(real_T t, real_T v0, real_T a0, real_T sf, real_T vf, real_T af,
-             real_T T);
-
-void a_opt_api(const mxArray *const prhs[7], const mxArray **plhs);
-
 void coef_list_fun(real_T v0, real_T a0, real_T sf, real_T vf, real_T af,
                    real_T T, real_T coef_list_var[6]);
 
 void coef_list_fun_api(const mxArray *const prhs[6], const mxArray **plhs);
+
+real_T coeffs_a_opt(real_T t, real_T in2[6]);
+
+void coeffs_a_opt_api(const mxArray *const prhs[2], const mxArray **plhs);
+
+real_T coeffs_j_opt(real_T t, real_T in2[6]);
+
+void coeffs_j_opt_api(const mxArray *const prhs[2], const mxArray **plhs);
+
+real_T coeffs_s_opt(real_T t, real_T in2[6]);
+
+void coeffs_s_opt_api(const mxArray *const prhs[2], const mxArray **plhs);
+
+real_T coeffs_v_opt(real_T t, real_T in2[6]);
+
+void coeffs_v_opt_api(const mxArray *const prhs[2], const mxArray **plhs);
 
 void primitives_atexit(void);
 
@@ -47,16 +58,10 @@ void primitives_xil_shutdown(void);
 
 void primitives_xil_terminate(void);
 
-real_T s_opt(real_T t, real_T v0, real_T a0, real_T sf, real_T vf, real_T af,
-             real_T T);
-
-void s_opt_api(const mxArray *const prhs[7], const mxArray **plhs);
-
 void student_pass_primitive(real_T v0, real_T a0, real_T sf, real_T vfmin,
                             real_T vfmax, real_T Tmin, real_T Tmax,
-                            real_T coeffsT2_data[], int32_T coeffsT2_size[2],
-                            real_T *v2, real_T *T2, real_T coeffsT1_data[],
-                            int32_T coeffsT1_size[2], real_T *v1, real_T *T1);
+                            real_T coeffsT2[6], real_T *v2, real_T *T2,
+                            real_T coeffsT1[6], real_T *v1, real_T *T1);
 
 void student_pass_primitive_api(const mxArray *const prhs[7], int32_T nlhs,
                                 const mxArray *plhs[6]);
@@ -79,11 +84,6 @@ void student_stop_primitive_j0(real_T v0, real_T a0, real_T coefsj0[6],
 
 void student_stop_primitive_j0_api(const mxArray *const prhs[2], int32_T nlhs,
                                    const mxArray *plhs[3]);
-
-real_T v_opt(real_T t, real_T v0, real_T a0, real_T sf, real_T vf, real_T af,
-             real_T T);
-
-void v_opt_api(const mxArray *const prhs[7], const mxArray **plhs);
 
 #ifdef __cplusplus
 }

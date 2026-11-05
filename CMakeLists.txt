@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 11)
 #set(CMAKE_OSX_ARCHITECTURES x86_64)
 
 include(lib/basic.cmake)
+# basic.cmake sets AGENT_FOLDER to ../bin relative to the build dir; pin it to basic_agent_ST/bin
+set(AGENT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 include_directories(
         matlab/codegen/lib/primitives
@@ -13,11 +15,16 @@ include_directories(
         lib
         log
         hlp
+        llc
+        .           # vehicle_params.h
 )
 
-link_directories(
-        lib
-)
+# Linux/WSL toolchains link PIE by default: use the -fPIC build of the precompiled lib
+if (UNIX AND NOT APPLE)
+    link_directories(lib/linux_fPIC)
+else ()
+    link_directories(lib)
+endif ()
 
 # ------------------------------- basic agent ------------------------------------
 add_executable(basic_agent
@@ -26,9 +33,13 @@ add_executable(basic_agent
         starting_point.cc
         matlab/codegen/lib/primitives/primitives.c
         matlab/codegen/lib/primitives/rt_nonfinite.c
+        matlab/codegen/lib/primitives/rtGetInf.c
+        matlab/codegen/lib/primitives/rtGetNaN.c
         hlp/rrt_star.cc
         hlp/pose_estimator.cc
         hlp/hlp.cc
+        llc/longitudinal.cc
+        llc/lateral.cc
     )
 
 
@@ -47,4 +58,13 @@ add_executable(rrt_star_test
         hlp/rrt_star.cc
     )
 set_target_properties(rrt_star_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${AGENT_FOLDER})
+# ------------------------------------------------------------------------------------
+
+# ---------------------- Stanley lateral control offline test -----------------------
+add_executable(lateral_test
+        llc/lateral_test.cc
+        llc/lateral.cc
+        hlp/pose_estimator.cc
+    )
+set_target_properties(lateral_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${AGENT_FOLDER})
 # ------------------------------------------------------------------------------------

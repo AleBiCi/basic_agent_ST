@@ -9,14 +9,14 @@ function [coefs,maxsf,tf] = student_stop_primitive(v0,a0,sf)
     % Impossible cases: negative velocity and null final position -->
     % return 0
     if (v0 <= 0) || (sf == 0)
-        coefs = zeros(1,6); % Returns a vector of 6 zeros for each coefficient
+        coefs = [0,0,0,0,0,0]; % Returns a vector of 6 zeros for each coefficient
         tf = 0.;
         maxsf = 0.; % Also set other returns to 0
     else
         % Can't reach a specified sf using given inputs (v0, a0)
         if 4*v0^2 + 5*a0*sf < 0
             maxsf = - (4*v0^2)/(5*a0);
-            tf = (10*maxsf)/(2*v0);
+            tf = (5*maxsf)/v0;
         else
             % Valid case: compute final time with defined function
             maxsf = sf;
@@ -24,6 +24,6 @@ function [coefs,maxsf,tf] = student_stop_primitive(v0,a0,sf)
         end
         
         % Evaluate coefficients (consider vf = af = 0)
-        coefs = coef_list_fun(v0, a0, 0., 0., 0., tf);
+        coefs = coef_list_fun(v0, a0, maxsf, 0., 0., tf); % slide 50 line 11: evalPrimitiveCoeffs(v0,a0,smax,0,0,tf)
     end
 end

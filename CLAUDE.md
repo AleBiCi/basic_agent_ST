@@ -32,6 +32,9 @@ C++ agent for PyDrivingSim. Workspace rules, references and modes are in `../../
   pose in W0 (= vehicle frame at the first cycle) from static objects as landmarks + `LaneHeading`;
   `hlp.{h,cc}` message (ObjID 3 target, 1/4 obstacles) -> plan, path -> `TrajectoryPointIX/IY` (23 pts).
   Called from `starting_point.cc` (plans once on the first cycle). Offline test: target `rrt_star_test`.
+  Pre-run map preview (2026-11-04): scenario `AutomationLevel < 0` = preview request for page -(AutomationLevel+1);
+  `starting_point.cc` answers with `hlp_path_page` (whole path, 22-vertex stride), `ManoeuverType = HLP_PREVIEW_ACK + status`,
+  and skips control and logs. Protocol in my_PyDrivingSim `scenarios/maps/README.md`.
 - `llc/longitudinal.{h,cc}`: action priming/selection (FreeFlow, Stop at the RRT* goal) and LLC
   (trapezoidal integrated jerk with internal a0 + saturation, PI on the pedal with clamp/anti-windup).
 - `llc/lateral.{h,cc}`: kinematic Stanley (05 deck p. 43-44 / printed 37-38, Hoffmann et al. 2007),
